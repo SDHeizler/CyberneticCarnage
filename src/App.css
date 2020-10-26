@@ -27,12 +27,32 @@
 .App-link {
   color: #61dafb;
 }
+@keyframes Attack {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: -350px;
+  }
+  100% {
+    left: 0px;
+  }
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes EnemyAttack {
+  0% {
+    right: 0px;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    right: -350px;
   }
+  100% {
+    right: 0px;
+  }
+}
+.YourRobot button:active {
+  position: relative;
+  animation-name: Attack;
+  animation-duration: 5s;
+  animation-timing-function: ease-in;
 }
