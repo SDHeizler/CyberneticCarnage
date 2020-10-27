@@ -5,7 +5,7 @@ const Robots = [
         Health:100,
         PlayerRobot: true,
         Attacks:[
-            'FlameThrower', 'Kick', 'Punch', 'Defend'
+            'FlameThrower', 'Kick', 'Punch', 'Defend','Heal'
         ]
     },
     {

@@ -72,7 +72,129 @@ async componentDidMount(){
 
   onSubmit = async (e, prop) => {
     e.preventDefault();
-    if(this.state.PlayerAttack === 'Defend'){
+     let enemyChoice = Math.floor(Math.random() * Math.floor(2));
+    if(this.state.PlayerAttack === 'Heal'){
+         let newPlayerHealth = this.state.YourRobot.map((ele) => {
+        ele.Health = 100
+        return ele
+      })
+      this.setState({
+        YourRobot:newPlayerHealth,
+        Disabled:true,
+        PlayerAttack:'',
+        Checked:NaN,
+      })
+      
+      this.setState({
+        PlayerAttack:'',
+        Checked:NaN,
+        Disabled:true,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+        },
+        EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+        }
+      })
+      
+      setTimeout( async() => {
+        console.log(enemyChoice)
+        setTimeout( () => {
+        let updatePlayer =  this.state.YourRobot.map((ele) => {
+          if(enemyChoice === 0){
+            ele.Health -= 10;
+          }
+          return ele
+        })
+        let healEnemy = this.state.EnemyRobot.map((ele) => {
+          if(enemyChoice === 1 && ele.Health < 100){
+            ele.Health += 5
+          }
+          return ele
+        })
+        if(enemyChoice === 1){
+          this.setState({
+        YourRobot:updatePlayer,
+        EnemyRobot: healEnemy,
+        EnemyAttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'5px solid Green',
+          display:'inline-block',
+          position:'relative',
+        }
+        })
+        }else{
+          this.setState({
+        YourRobot:updatePlayer,
+        })
+        }
+      }, 1000)
+        if(enemyChoice === 0){
+        this.setState({
+        Disabled:false,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          },
+          EnemyAttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          animationName:'EnemyAttack',
+          animationDuration:'1s',
+          animationTimingFunction:'ease-in'
+          }
+      })
+        }else{
+          this.setState({
+        Disabled:false,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          },
+      })
+        }
+        
+       
+
+        if(this.state.EnemyRobot[0].Health === 'Dead'){
+      let newEnemyRobot = await this.state.EnemyRobots.find((ele) => {
+        if(ele.id !== this.state.EnemyRobot[0].id){
+          return ele
+        }
+        return null
+      })
+      this.setState({
+        EnemyRobot:[newEnemyRobot],
+        Disabled:false,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          }
+      })
+    }
+      }, 2000)
+    }else if(this.state.PlayerAttack === 'Defend'){
       this.setState({
         AttackStyle:{
         width:'450px',
@@ -93,7 +215,7 @@ async componentDidMount(){
         },
       })
 
-      setTimeout( async () => {
+      setTimeout(() => {
         this.setState({
           Disabled:false,
           EnemyAttackStyle:{
@@ -128,12 +250,10 @@ async componentDidMount(){
       }, 2000)
     }else{
       console.log('Attack!', this.state.PlayerAttack)
-      let newHealth = this.state.EnemyRobot[0].Health -  10;
-      console.log(newHealth)
       setTimeout(() => {
         let updateEnemy = this.state.EnemyRobot.map((ele) => {
         if(ele.Health > 0){
-          ele.Health = newHealth
+          ele.Health -= 10
         }
         if(ele.Health <= 0){
           ele.Health = 'Dead'
@@ -169,26 +289,40 @@ async componentDidMount(){
         }
       })
       
-
-
-      setTimeout( async () => {
-
-        let enemyChoice = await Math.floor(Math.random() * Math.floor(2));
+      setTimeout( async() => {
         console.log(enemyChoice)
-          setTimeout( () => {
-        let newPlayerHealth =  this.state.YourRobot[0].Health -  10;
+        setTimeout( () => {
         let updatePlayer =  this.state.YourRobot.map((ele) => {
           if(enemyChoice === 0){
-            ele.Health = newPlayerHealth
+            ele.Health -= 10;
           }
           return ele
         })
-
+        let healEnemy = this.state.EnemyRobot.map((ele) => {
+          if(enemyChoice === 1 && ele.Health < 100){
+            ele.Health += 5
+          }
+          return ele
+        })
+        if(enemyChoice === 1){
           this.setState({
-            YourRobot:updatePlayer,
-          })
-        }, 1000)
-
+        YourRobot:updatePlayer,
+        EnemyRobot: healEnemy,
+        EnemyAttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'5px solid Green',
+          display:'inline-block',
+          position:'relative',
+        }
+        })
+        }else{
+          this.setState({
+        YourRobot:updatePlayer,
+        })
+        }
+      }, 1000)
+        if(enemyChoice === 0){
         this.setState({
         Disabled:false,
         AttackStyle:{
@@ -209,6 +343,19 @@ async componentDidMount(){
           animationTimingFunction:'ease-in'
           }
       })
+        }else{
+          this.setState({
+        Disabled:false,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          },
+      })
+        }
+        
        
 
         if(this.state.EnemyRobot[0].Health === 'Dead'){
