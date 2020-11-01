@@ -33,6 +33,9 @@ class App extends React.Component {
             display:'inline-block',
             position:'relative',
         },
+        GitHubLinkStyle:{
+          display:'none'
+        }
       
     }
   }
@@ -74,7 +77,7 @@ async componentDidMount(){
     e.preventDefault();
      let enemyChoice = Math.floor(Math.random() * Math.floor(2));
     if(this.state.PlayerAttack === 'Heal'){
-         let newPlayerHealth = this.state.YourRobot.map((ele) => {
+        let newPlayerHealth = this.state.YourRobot.map((ele) => {
         ele.Health = 100
         return ele
       })
@@ -117,6 +120,8 @@ async componentDidMount(){
         let healEnemy = this.state.EnemyRobot.map((ele) => {
           if(enemyChoice === 1 && ele.Health < 100){
             ele.Health += 5
+          }else{
+            return ele
           }
           return ele
         })
@@ -172,7 +177,7 @@ async componentDidMount(){
       })
         }
         
-       
+      
 
         if(this.state.EnemyRobot[0].Health === 'Dead'){
       let newEnemyRobot = await this.state.EnemyRobots.find((ele) => {
@@ -356,7 +361,7 @@ async componentDidMount(){
       })
         }
         
-       
+        
 
         if(this.state.EnemyRobot[0].Health === 'Dead'){
       let newEnemyRobot = await this.state.EnemyRobots.find((ele) => {
@@ -382,21 +387,35 @@ async componentDidMount(){
 
     
     }
-  }
+  };
     
-
-
   onChange = (e) => {
     this.setState({
       PlayerAttack:e.target.value,
       Checked:e.target.id
     })
-    
-  }
+  };
+
+  onPointerEnter = () => {
+        this.setState({
+      GitHubLinkStyle:{
+        textDecoration:'none',
+        position:'relative',
+      
+      }
+    })
+  };
+  onPointerLeave = () => {
+    this.setState({
+      GitHubLinkStyle:{
+        display:'none'
+      }
+    })
+  };
   render(){
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar onPointerLeave={this.onPointerLeave} onPointerEnter={this.onPointerEnter} GitHubLinkStyle={this.state.GitHubLinkStyle}></NavBar>
       <Switch>
         <Route exact path='/'><Home></Home></Route>
         <Route path='/YourRobot'>

@@ -7,6 +7,7 @@ class RobotFightCard extends React.Component {
         return ( 
             <div className='YourRobot' style={this.props.AttackStyle}>
                 <h4>{this.props.Name}</h4>
+                <img style={RobotImageStyle} src={this.props.RobotImage}></img>
                 <h5>Health: {this.props.Health}%</h5>
                 <HealthBar Health={this.props.Health}></HealthBar>
                 <form className='form' style={formStyle}
@@ -40,7 +41,10 @@ class RobotFightCard extends React.Component {
 const formStyle={
     display:'flex',
     flexDirection:'column'
+};
+const RobotImageStyle = {
+    height:'250px',
+    width:'250px'
 }
-
 
 export default RobotFightCard;

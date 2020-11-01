@@ -2,6 +2,7 @@ import React from 'react';
 import RobotFightCard from './RobotFightCard'
 import EnemyFightCard from './EnemyFightCard'
 import {Redirect} from 'react-router-dom'
+import Robot1 from '../pictures/Robot1.jpg'
 class OneFight extends React.Component {
         
 
@@ -30,6 +31,7 @@ Redirect = () => {
                         Checked={this.props.Checked}
                         disabled={this.props.disabled}
                         AttackStyle={this.props.AttackStyle}
+                        RobotImage={Robot1}
                         ></RobotFightCard>
                     )
                 })}

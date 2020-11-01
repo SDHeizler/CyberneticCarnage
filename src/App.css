@@ -50,9 +50,22 @@
     right: 0px;
   }
 }
+@keyframes LinkHoverTransition {
+  0% {
+    color: black;
+  }
+  100% {
+    color: salmon;
+  }
+}
 .YourRobot button:active {
   position: relative;
   animation-name: Attack;
   animation-duration: 5s;
   animation-timing-function: ease-in;
+}
+.LinkHover:hover {
+  animation-name: LinkHoverTransition;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
