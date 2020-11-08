@@ -11,12 +11,12 @@ class NavBar extends React.Component {
                 <div>
                     <Link className='LinkHover' style={NavBarLinkStyle} to='/'>Home</Link>
                 </div>
-                <div>
-                    <img onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={imgStyle} src={Menu}></img>
-                    <div>
+                <div style={containerHamburgerMenu}>
+                    <img onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={imgStyle} src={Menu} alt=''></img>
+                    <div style={containerGitHubLink}>
                     <ul onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={this.props.GitHubLinkStyle}>
-                        <li>Link1</li>
-                        <li>Link2</li>
+                        <li style={ListItemStyle}><a style={hrefStyle} href='#'>Github</a></li>
+                        <li style={ListItemStyle}><a style={hrefStyle} href='#'>Portfolio</a></li>
                     </ul>
                     </div>
                 </div>
@@ -26,14 +26,18 @@ class NavBar extends React.Component {
     }
 }
 const NavBarStyle = {
-    height:'100px',
-    background:'lightblue',
+    height:'50px',
+    background:'#234691',
     display:'flex',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    paddingTop:'10px',
+    color:'White',
+    width:'100%'
 }; 
 const NavBarLinkStyle = {
-    color:'black',
-    textDecoration:'none'
+    color:'White',
+    textDecoration:'none',
+    fontSize:'20px'
 };
 const imgStyle = {
     height:'25px',
@@ -43,7 +47,22 @@ const imgStyle = {
 };
 const LinkContainerStyle ={
     display:'flex',
-    justifyContent:'space-around'
+    
 }
-
+const containerGitHubLink = {
+    position:'absolute',
+    left:'0'
+};
+const containerHamburgerMenu = {
+    position:'relative',
+    marginRight:'2vw'
+};
+const ListItemStyle = {
+    borderBottom:'1px solid black',
+};
+const hrefStyle={
+    color:'White',
+    textDecoration:'none',
+    fontSize:'20px'
+};
 export default NavBar;

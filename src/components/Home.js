@@ -1,15 +1,21 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import RoboticBackground from '../pictures/roboticbackground.jpg'
 class Home extends React.Component {
     render() { 
         return ( 
-            <div>
-                <h1>Welcome to Cybernetic Carnage</h1>
-                <p>Where would you like to go?</p>
+            <div className='HomePage' style={HomePageStyle}>
+                <div className='jubotron jubotron-fluid'>
+                    <h1 className='display-3'>Welcome to Cybernetic Carnage</h1>
+                    <p className='lead'>Get ready for battle!</p>
+                </div>
                 <div className='homeStyleNav' style={HomeStyleNav}>
                 <Link className='LinkHover' style={LinkStyle} to='/YourRobot'>YourRobot</Link>
                 <Link className="LinkHover" style={LinkStyle}  to='/SingleBattle'>Battle</Link>
                 </div>
+                <footer style={FooterStyle}>
+                    <h4 style={FooterCopyrightStyle}>&#169; 2020 Scott Heizler</h4>
+                </footer>
             </div>
          );
     }
@@ -17,10 +23,29 @@ class Home extends React.Component {
 const HomeStyleNav = {
     display:'flex',
     justifyContent:'space-around',
-    fontSize:'50px'
+    fontSize:'50px',
+    marginTop:'25vh',
 };
 const LinkStyle = {
     textDecoration:'none',
-    color:'black'
-}
+    color:'White'
+};
+const HomePageStyle = {
+    color:'White',
+    height:'95%',
+   
+};
+const FooterStyle = {
+    backgroundColor:'#234691',
+    height:'50px',
+    marginBottom:'0px',
+    width:'100%',
+    marginTop:'100%',
+    position:'absolute',
+    bottom:'0'
+
+};
+const FooterCopyrightStyle = {
+
+};
 export default Home;

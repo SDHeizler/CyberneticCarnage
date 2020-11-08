@@ -1,23 +1,22 @@
 import React from 'react';
-import Robot1 from '../pictures/Robot1.jpg'
 class YourRobotStats extends React.Component {
     render() { 
         return ( 
             <div className='container'>
                     <h1>Name: {this.props.name}</h1>
                     <div style={DivSize}>
-                    <img style={YourRobotImageStyle} src={this.props.RobotImage}></img>
+                    <img style={YourRobotImageStyle} src={this.props.RobotImage} alt=''></img>
                     <ul style={UlListStyle}>
-                        <h4>Stats:</h4>
-                        <li>Health:{this.props.health}</li>
+                        <h3 style={YourRobotStatsStyle}>Stats:</h3>
+                        <li style={YourRobotHealthStyle}>Health:{this.props.health}</li>
                     </ul>
                     </div>
                     <div style={DivSize}>
                     <ol style={OlListStyle}>
-                        <h4>Attacks:</h4>
+                        <h4 style={YourRobotAttackStyle}>Attacks:</h4>
                         {this.props.attacks.map((ele, index) => {
                             return(
-                            <li key={index}>{ele}</li>
+                            <li style={YourRobotAttackListStyle} key={index}>{ele}</li>
                             )
                         })}
                     </ol>
@@ -41,5 +40,17 @@ const DivSize = {
 const YourRobotImageStyle = {
     height:'250px',
     width:'250px'
+};
+const YourRobotStatsStyle = {
+    fontSize:'35px'
 }
+const YourRobotHealthStyle = {
+    fontSize:'25px'
+};
+const YourRobotAttackStyle = {
+    fontSize:'35px'
+};
+const YourRobotAttackListStyle = {
+    fontSize:'25px'
+};
 export default YourRobotStats;

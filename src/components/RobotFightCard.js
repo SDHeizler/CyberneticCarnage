@@ -6,9 +6,9 @@ class RobotFightCard extends React.Component {
     render() { 
         return ( 
             <div className='YourRobot' style={this.props.AttackStyle}>
-                <h4>{this.props.Name}</h4>
-                <img style={RobotImageStyle} src={this.props.RobotImage}></img>
-                <h5>Health: {this.props.Health}%</h5>
+                <h3>{this.props.Name}</h3>
+                <img style={RobotImageStyle} src={this.props.RobotImage} alt=''></img>
+                <h4>Health: {this.props.Health}%</h4>
                 <HealthBar Health={this.props.Health}></HealthBar>
                 <form className='form' style={formStyle}
                 target='input'
@@ -16,9 +16,12 @@ class RobotFightCard extends React.Component {
                         
                     {this.props.Attacks.map((ele, index) => {
                         return(
-                                <label  key={index} htmlFor='Attacks'>
+                                <label
+                                    style={LabelInputStyle}
+                                    key={index} 
+                                    htmlFor='Attacks'>
                                     {ele} {' '}
-                                    <input onChange={(e) => this.props.onChange(e)}
+                                        <input onChange={(e) => this.props.onChange(e)}
                                         name="Attacks" 
                                         type='radio' 
                                         value={ele} 
@@ -30,7 +33,7 @@ class RobotFightCard extends React.Component {
                         )
                     })}
 
-                    <button disabled={this.props.disabled} className='btn-primary' type='Submit'>End Turn</button>
+                    <button disabled={this.props.disabled} className='btn btn-primary btn-lg' type='Submit'>End Turn</button>
                 </form>
                 
             </div>
@@ -40,11 +43,15 @@ class RobotFightCard extends React.Component {
  
 const formStyle={
     display:'flex',
-    flexDirection:'column'
+    flexDirection:'column',
+    color:'black'
 };
 const RobotImageStyle = {
     height:'250px',
     width:'250px'
+};
+const LabelInputStyle = {
+    fontSize:'20px',
+    marginTop:'10px'
 }
-
 export default RobotFightCard;

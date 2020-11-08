@@ -15,7 +15,7 @@ class HealthBar extends React.Component {
 const progressBar={
     marginLeft:'auto',
     marginRight:'auto',
-    height:'20px',
+    height:'30px',
     width:'400px',
     borderRadius:'50px',
     border:'1px solid black',

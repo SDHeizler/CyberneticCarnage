@@ -1,10 +1,10 @@
 import React from 'react';
 import YourRobotStats from './YourRobotStats'
-import Robot1 from '../pictures/Robot1.jpg'
+import YourRobotPic from '../pictures/YourRobotPic.jpg'
 class YourRobot extends React.Component {
     render() { 
         return ( 
-            <div>
+            <div className='YourRobotPage' style={YourRobotPageStyle}>
                 <h1>YourRobot</h1>
                 {this.props.YourRobot.map((ele) => {
                         return(
@@ -13,7 +13,7 @@ class YourRobot extends React.Component {
                             name={ele.name}
                             health={ele.Health}
                             attacks={ele.Attacks}
-                            RobotImage={Robot1}
+                            RobotImage={YourRobotPic}
                             ></YourRobotStats>
                         )
                 })}
@@ -21,5 +21,8 @@ class YourRobot extends React.Component {
          );
     }
 }
-
+const YourRobotPageStyle = {
+    height:'100vh',
+    color:'White',
+}
 export default YourRobot;
