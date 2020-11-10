@@ -12,9 +12,6 @@ class App extends React.Component {
     super()
     this.state={
         Robots:[],
-        YourRobot:[],
-        EnemyRobots:[],
-        EnemyRobot:[],
         PlayerAttack:'',
         Checked:NaN,
         PlayerHealthPer:'',
@@ -44,40 +41,13 @@ class App extends React.Component {
     }
   }
 async componentDidMount(){
-
-  const getEnemyRobots = await Robots.filter((ele) => {
-    if(ele.PlayerRobot === false){
-      return ele
-    }
-    return null
-  })
+  const getAllRobots = await Robots.map((ele) => {
+    return ele;
+  });
     this.setState({
-      Robots:[...Robots],
-      EnemyRobots:getEnemyRobots,
-    });
-    console.log(this.state.EnemyRobotPic)
-    let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
-    let findEnemyRobot = await this.state.EnemyRobots.find((ele,index) => {
-        if(index === enemyNum){
-          return ele
-        }
-        return null
-      })
-    let findYourRobot = await this.state.Robots.filter((ele) => {
-        if(ele.PlayerRobot === true){
-          return ele
-        }else{
-          return null
-        }
-      })
-    this.setState({
-      EnemyRobot:[findEnemyRobot],
-      YourRobot:findYourRobot
+      Robots:getAllRobots
     })
-    
-  }
-
-
+  };
 
   onSubmit = async (e, prop) => {
     e.preventDefault();
@@ -467,13 +437,13 @@ async componentDidMount(){
         <Route exact path='/'><Home></Home></Route>
         <Route path='/YourRobot'>
           <YourRobot 
-          YourRobot={this.state.YourRobot}></YourRobot></Route>
+          Robots={this.state.Robots}></YourRobot></Route>
         <Route path='/SingleBattle'>
           <OneFight 
+          Robots={this.state.Robots}
         YourRobot={this.state.YourRobot} 
         EnemyRobot={this.state.EnemyRobot} 
         onSubmit={this.onSubmit} onChange={this.onChange}
-        PlayerAttackValue={this.state.PlayerAttack}
         Checked={this.state.Checked}
         disabled={this.state.Disabled}
         AttackStyle={this.state.AttackStyle}

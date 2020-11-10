@@ -44,7 +44,7 @@ class RobotFightCard extends React.Component {
 const formStyle={
     display:'flex',
     flexDirection:'column',
-    color:'black'
+    
 };
 const RobotImageStyle = {
     height:'250px',

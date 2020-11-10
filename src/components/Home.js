@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import RoboticBackground from '../pictures/roboticbackground.jpg'
 class Home extends React.Component {
     render() { 
         return ( 
