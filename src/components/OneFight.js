@@ -10,45 +10,31 @@ class OneFight extends React.Component {
         this.state = {
             YourRobot:[],
             EnemyRobots:[],
-            EnemyRobot:[]
+            EnemyRobot:[],
+            PlayerAttack:'',
+            Checked:NaN,
+            PlayerHealthPer:'',
+            Disabled:false,
+            AttackStyle:{
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+            backgroundColor:'rgba(211, 211, 211, 0.850)',
+            color:'black'
+},
+        EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+            backgroundColor:'rgba(211, 211, 211, 0.850)',
+            color:'black'
+        },
         };
     };
-    async componentDidMount(){
-    const getEnemyRobots = await this.props.Robots.filter((ele) => {
-    if(ele.PlayerRobot === false){
-      return ele
-    }
-    return null
-  })
-    this.setState({
-      EnemyRobots:getEnemyRobots,
-    });
-
-    
-        let getYourRobot = await this.props.Robots.find((ele) => {
-        if(ele.PlayerRobot === true){
-            return ele
-        }else{
-            return null
-        }
-        });
-
-
-
-         let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
-    let findEnemyRobot = await this.state.EnemyRobots.find((ele,index) => {
-        if(index === enemyNum){
-          return ele
-        }
-        return null
-      });
-
-    this.setState({
-        YourRobot:[getYourRobot],
-        EnemyRobot:[findEnemyRobot]
-    });
-    }
-        
 
 Redirect = () => {
     return <Redirect to='/'></Redirect>
@@ -61,7 +47,7 @@ Redirect = () => {
                 <h1>Battle!</h1>
                 </header>
                 <div style={containerStyle}>
-                {this.state.YourRobot.map((ele) => {
+                {this.props.YourRobot.map((ele) => {
                     return(
                         <RobotFightCard key={ele.id} 
                         Name={ele.name} 
@@ -69,7 +55,7 @@ Redirect = () => {
                             return ele
                         })}
                         Health={ele.Health}
-                        onSubmit={(e) => {this.props.onSubmit(e)}}
+                        onSubmit={(e) => this.props.onSubmit(e)}
                         onChange={(e) => this.props.onChange(e)}
                         Checked={this.props.Checked}
                         disabled={this.props.disabled}
@@ -82,7 +68,7 @@ Redirect = () => {
                 </div>
 
                 <div>
-                    {this.state.EnemyRobot.map((ele, index) => {
+                    {this.props.EnemyRobot.map((ele, index) => {
                         if(ele.Health === 'Dead'){
                                 return  this.Redirect()
                             }else{ 

@@ -12,6 +12,9 @@ class App extends React.Component {
     super()
     this.state={
         Robots:[],
+        EnemyRobots:[],
+        EnemyRobot:[],
+        YourRobot:[],
         PlayerAttack:'',
         Checked:NaN,
         PlayerHealthPer:'',
@@ -23,7 +26,8 @@ class App extends React.Component {
         display:'inline-block',
         position:'relative',
         backgroundColor:'rgba(211, 211, 211, 0.850)',
-        color:'black'
+        color:'black',
+        borderRadius:'8px'
 },
         EnemyAttackStyle: {
             width:'450px',
@@ -32,7 +36,8 @@ class App extends React.Component {
             display:'inline-block',
             position:'relative',
             backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
+            color:'black',
+            borderRadius:'8px'
         },
         GitHubLinkStyle:{
           display:'none'
@@ -47,11 +52,70 @@ async componentDidMount(){
     this.setState({
       Robots:getAllRobots
     })
+    let getYourRobot = await Robots.find((ele) => {
+        if(ele.PlayerRobot === true){
+          return ele
+        }else{
+          return null
+        }
+      });
+
+    this.setState({
+      YourRobot:[getYourRobot]
+    });
+    const getEnemyRobots = await Robots.filter((ele) => {
+    if(ele.PlayerRobot === false){
+        return ele
+    }
+    return null
+    })
+    this.setState({
+        EnemyRobots:getEnemyRobots,
+    });
+         let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
+    let findEnemyRobot = await this.state.EnemyRobots.find((ele,index) => {
+        if(index === enemyNum){
+            return ele
+        }
+        return null
+        });
+
+    this.setState({
+        EnemyRobot:[findEnemyRobot]
+    });
   };
 
   onSubmit = async (e, prop) => {
     e.preventDefault();
+
+    this.setState({
+        PlayerAttack:'',
+        Checked:NaN,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          backgroundColor:'rgba(211, 211, 211, 0.850)',
+          color:'black',
+          borderRadius:'8px'
+        },
+        EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+            backgroundColor:'rgba(211, 211, 211, 0.850)',
+            color:'black',
+            borderRadius:'8px'
+        }
+      })
+
      let enemyChoice = Math.floor(Math.random() * Math.floor(2));
+
+
     if(this.state.PlayerAttack === 'Heal'){
         let newPlayerHealth = this.state.YourRobot.map((ele) => {
         ele.Health = 100
@@ -63,33 +127,8 @@ async componentDidMount(){
         PlayerAttack:'',
         Checked:NaN,
       })
-      
-      this.setState({
-        PlayerAttack:'',
-        Checked:NaN,
-        Disabled:true,
-        AttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'1px solid black',
-          display:'inline-block',
-          position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
-        },
-        EnemyAttackStyle: {
-            width:'450px',
-            marginLeft:'0',
-            border:'1px solid black',
-            display:'inline-block',
-            position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
-        }
-      })
-      
-      setTimeout( async() => {
-        console.log(enemyChoice)
+    
+      setTimeout(() => {
         setTimeout( () => {
         let updatePlayer =  this.state.YourRobot.map((ele) => {
           if(enemyChoice === 0){
@@ -116,7 +155,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
         }
         })
         }else{
@@ -127,7 +167,6 @@ async componentDidMount(){
       }, 1000)
         if(enemyChoice === 0){
         this.setState({
-        Disabled:false,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -135,7 +174,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           },
           EnemyAttackStyle:{
           width:'450px',
@@ -147,9 +187,15 @@ async componentDidMount(){
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           }
       })
+      setTimeout(() =>{
+        this.setState({
+          Disabled:false
+        })
+      }, 1000)
         }else{
           this.setState({
         Disabled:false,
@@ -160,34 +206,11 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           },
       })
         }
-        
-      
-
-        if(this.state.EnemyRobot[0].Health === 'Dead'){
-      let newEnemyRobot = await this.state.EnemyRobots.find((ele) => {
-        if(ele.id !== this.state.EnemyRobot[0].id){
-          return ele
-        }
-        return null
-      })
-      this.setState({
-        EnemyRobot:[newEnemyRobot],
-        Disabled:false,
-        AttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'1px solid black',
-          display:'inline-block',
-          position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
-          }
-      })
-    }
       }, 2000)
     }else if(this.state.PlayerAttack === 'Defend'){
       this.setState({
@@ -198,7 +221,8 @@ async componentDidMount(){
         display:'inline-block',
         position:'relative',
         backgroundColor:'rgba(211, 211, 211, 0.850)',
-        color:'black'
+        color:'black',
+        borderRadius:'8px'
         },
         PlayerAttack:'',
         Checked:NaN,
@@ -210,13 +234,13 @@ async componentDidMount(){
             display:'inline-block',
             position:'relative',
             backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
+            color:'black',
+            borderRadius:'8px'
         },
       })
 
       setTimeout(() => {
         this.setState({
-          Disabled:false,
           EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -227,11 +251,13 @@ async componentDidMount(){
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           }
       })
       setTimeout(() => {
         this.setState({
+        Disabled:false,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -239,7 +265,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           },
         EnemyAttackStyle:{
           width:'450px',
@@ -248,13 +275,13 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           }
       })
       }, 1000)
       }, 2000)
     }else{
-      console.log('Attack!', this.state.PlayerAttack)
       setTimeout(() => {
         let updateEnemy = this.state.EnemyRobot.map((ele) => {
         if(ele.Health > 0){
@@ -268,13 +295,13 @@ async componentDidMount(){
 
         this.setState({
             EnemyRobot:updateEnemy,
+            Disabled:true,
         })
       }, 1000)
       
       this.setState({
         PlayerAttack:'',
         Checked:NaN,
-        Disabled:true,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -285,7 +312,8 @@ async componentDidMount(){
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
         },
         EnemyAttackStyle: {
             width:'450px',
@@ -294,12 +322,12 @@ async componentDidMount(){
             display:'inline-block',
             position:'relative',
             backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
+            color:'black',
+            borderRadius:'8px'
         }
       })
       
       setTimeout( async() => {
-        console.log(enemyChoice)
         setTimeout( () => {
         let updatePlayer =  this.state.YourRobot.map((ele) => {
           if(enemyChoice === 0){
@@ -324,7 +352,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
         }
         })
         }else{
@@ -335,7 +364,6 @@ async componentDidMount(){
       }, 1000)
         if(enemyChoice === 0){
         this.setState({
-        Disabled:false,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -343,7 +371,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           },
           EnemyAttackStyle:{
           width:'450px',
@@ -355,9 +384,15 @@ async componentDidMount(){
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           }
       })
+      setTimeout(() => {
+          this.setState({
+            Disabled:false,
+          })
+      },1000)
         }else{
           this.setState({
         Disabled:false,
@@ -368,7 +403,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           },
       })
         }
@@ -392,7 +428,8 @@ async componentDidMount(){
           display:'inline-block',
           position:'relative',
           backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black'
+          color:'black',
+          borderRadius:'8px'
           }
       })
     }
@@ -437,17 +474,17 @@ async componentDidMount(){
         <Route exact path='/'><Home></Home></Route>
         <Route path='/YourRobot'>
           <YourRobot 
-          Robots={this.state.Robots}></YourRobot></Route>
+          YourRobot={this.state.YourRobot}></YourRobot></Route>
         <Route path='/SingleBattle'>
           <OneFight 
-          Robots={this.state.Robots}
-        YourRobot={this.state.YourRobot} 
-        EnemyRobot={this.state.EnemyRobot} 
-        onSubmit={this.onSubmit} onChange={this.onChange}
-        Checked={this.state.Checked}
-        disabled={this.state.Disabled}
-        AttackStyle={this.state.AttackStyle}
-        EnemyStyle={this.state.EnemyAttackStyle}
+          YourRobot={this.state.YourRobot}
+          EnemyRobot={this.state.EnemyRobot}
+          onSubmit={this.onSubmit}
+          onChange={this.onChange}
+          Checked={this.state.Checked}
+          disabled={this.state.Disabled}
+          AttackStyle={this.state.AttackStyle}
+           EnemyStyle={this.state.EnemyAttackStyle}
         ></OneFight></Route>
       </Switch>
     </div>

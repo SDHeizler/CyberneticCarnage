@@ -61,7 +61,6 @@ a:hover {
   background-image: url("./pictures/roboticbackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(211, 211, 211, 0.555);
 }
 input[type="radio"] {
   width: 20px;

@@ -8,24 +8,11 @@ class YourRobot extends React.Component {
             YourRobot:[]
         }
     };
-   async componentDidMount(){
-        let getYourRobot = await this.props.Robots.find((ele) => {
-        if(ele.PlayerRobot === true){
-          return ele
-        }else{
-          return null
-        }
-      });
-
-    this.setState({
-      YourRobot:[getYourRobot]
-    });
-    };
     render() { 
         return ( 
             <div className='YourRobotPage' style={YourRobotPageStyle}>
                 <h1>YourRobot</h1>
-                {this.state.YourRobot.map((ele) => {
+                {this.props.YourRobot.map((ele) => {
                         return(
                             <YourRobotStats
                             key={ele.id}

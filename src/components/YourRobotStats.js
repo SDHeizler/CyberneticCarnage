@@ -2,7 +2,7 @@ import React from 'react';
 class YourRobotStats extends React.Component {
     render() { 
         return ( 
-            <div className='container'>
+            <div style={DivContStyle} className='container'>
                     <h1>Name: {this.props.name}</h1>
                     <div style={DivSize}>
                     <img style={YourRobotImageStyle} src={this.props.RobotImage} alt=''></img>
@@ -52,5 +52,12 @@ const YourRobotAttackStyle = {
 };
 const YourRobotAttackListStyle = {
     fontSize:'25px'
+};
+const DivContStyle = {
+    border:'1px solid black',
+    backgroundColor:'rgba(211, 211, 211, 0.850)',
+    width:'35%',
+    color:'black',
+    borderRadius:'8px'
 };
 export default YourRobotStats;
