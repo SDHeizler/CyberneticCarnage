@@ -5,42 +5,15 @@ import {Redirect} from 'react-router-dom'
 import YourRobotPic from '../pictures/YourRobotPic.jpg';
 import Robot1 from '../pictures/Robot1.jpg'
 class OneFight extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            YourRobot:[],
-            EnemyRobots:[],
-            EnemyRobot:[],
-            PlayerAttack:'',
-            Checked:NaN,
-            PlayerHealthPer:'',
-            Disabled:false,
-            AttackStyle:{
-            width:'450px',
-            marginLeft:'0',
-            border:'1px solid black',
-            display:'inline-block',
-            position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
-},
-        EnemyAttackStyle: {
-            width:'450px',
-            marginLeft:'0',
-            border:'1px solid black',
-            display:'inline-block',
-            position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black'
-        },
-        };
-    };
+
 
 Redirect = () => {
     return <Redirect to='/'></Redirect>
 }
+youLose = () => {
+    return <Redirect to='/YouLose'></Redirect>
+}
     render() { 
-
         return ( 
             <div className='FightPage' style={FightPageStyle}>
                 <header>
@@ -48,7 +21,10 @@ Redirect = () => {
                 </header>
                 <div style={containerStyle}>
                 {this.props.YourRobot.map((ele) => {
-                    return(
+                    if(ele.Health <= 0){
+                        return this.youLose()
+                    }else{
+                        return(
                         <RobotFightCard key={ele.id} 
                         Name={ele.name} 
                         Attacks={ele.Attacks.map((ele, index) => {
@@ -63,20 +39,21 @@ Redirect = () => {
                         RobotImage={YourRobotPic}
                         ></RobotFightCard>
                     )
+                    }
                 })}
                 <div>
                 </div>
 
                 <div>
                     {this.props.EnemyRobot.map((ele, index) => {
-                        if(ele.Health === 'Dead'){
+                        if(ele.Health <= 0){
                                 return  this.Redirect()
                             }else{ 
                         return(
                             <EnemyFightCard
                             key={ele.id}
                             Health={ ele.Health}
-                            Name={ ele.name}
+                            Name={ ele.name }
                             EnemyStyle={this.props.EnemyStyle}
                             EnemyRobotPic={Robot1}
                             ></EnemyFightCard>

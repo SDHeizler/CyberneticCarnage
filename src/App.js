@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
-import {Switch, Route,} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import Robots from './RobotsDatabasetest';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import YourRobot from './components/YourRobot';
 import OneFight from './components/OneFight';
+import Error from './components/404';
+import YouLose from './components/YouLose';
+import axios from 'axios';
+
 
 class App extends React.Component {
   constructor(){
@@ -46,13 +50,20 @@ class App extends React.Component {
     }
   }
 async componentDidMount(){
-  const getAllRobots = await Robots.map((ele) => {
-    return ele;
+  const getAllRobots = await 
+  axios.get('http://localhost:8000/')
+  .then((res) => {
+    return res.data
+  })
+  .catch((err) => {console.log(err)});
+
+  this.setState({
+    ...this.state,
+    Robots:getAllRobots
   });
-    this.setState({
-      Robots:getAllRobots
-    })
-    let getYourRobot = await Robots.find((ele) => {
+
+
+    let getYourRobot = await this.state.Robots.find((ele) => {
         if(ele.PlayerRobot === true){
           return ele
         }else{
@@ -60,16 +71,16 @@ async componentDidMount(){
         }
       });
 
-    this.setState({
+    this.setState({ ...this.state,
       YourRobot:[getYourRobot]
     });
-    const getEnemyRobots = await Robots.filter((ele) => {
+    const getEnemyRobots = await this.state.Robots.filter((ele) => {
     if(ele.PlayerRobot === false){
         return ele
     }
     return null
     })
-    this.setState({
+    this.setState({ ...this.state,
         EnemyRobots:getEnemyRobots,
     });
          let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
@@ -80,7 +91,7 @@ async componentDidMount(){
         return null
         });
 
-    this.setState({
+    this.setState({...this.state,
         EnemyRobot:[findEnemyRobot]
     });
   };
@@ -88,7 +99,7 @@ async componentDidMount(){
   onSubmit = async (e, prop) => {
     e.preventDefault();
 
-    this.setState({
+    this.setState({ ...this.state,
         PlayerAttack:'',
         Checked:NaN,
         AttackStyle:{
@@ -121,7 +132,7 @@ async componentDidMount(){
         ele.Health = 100
         return ele
       })
-      this.setState({
+      this.setState({...this.state,
         YourRobot:newPlayerHealth,
         Disabled:true,
         PlayerAttack:'',
@@ -131,10 +142,10 @@ async componentDidMount(){
       setTimeout(() => {
         setTimeout( () => {
         let updatePlayer =  this.state.YourRobot.map((ele) => {
-          if(enemyChoice === 0){
-            ele.Health -= 10;
-          }
-          return ele
+          if(ele.Health > 0){
+          ele.Health -= 10
+        }
+        return ele
         })
         let healEnemy = this.state.EnemyRobot.map((ele) => {
           if(enemyChoice === 1 && ele.Health < 100){
@@ -145,7 +156,7 @@ async componentDidMount(){
           return ele
         })
         if(enemyChoice === 1){
-          this.setState({
+        this.setState({...this.state,
         YourRobot:updatePlayer,
         EnemyRobot: healEnemy,
         EnemyAttackStyle:{
@@ -160,13 +171,13 @@ async componentDidMount(){
         }
         })
         }else{
-          this.setState({
+        this.setState({...this.state,
         YourRobot:updatePlayer,
         })
         }
       }, 1000)
         if(enemyChoice === 0){
-        this.setState({
+        this.setState({...this.state,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -192,12 +203,12 @@ async componentDidMount(){
           }
       })
       setTimeout(() =>{
-        this.setState({
+        this.setState({...this.state,
           Disabled:false
         })
       }, 1000)
         }else{
-          this.setState({
+          this.setState({...this.state,
         Disabled:false,
         AttackStyle:{
           width:'450px',
@@ -213,7 +224,7 @@ async componentDidMount(){
         }
       }, 2000)
     }else if(this.state.PlayerAttack === 'Defend'){
-      this.setState({
+      this.setState({...this.state,
         AttackStyle:{
         width:'450px',
         marginLeft:'0',
@@ -240,7 +251,7 @@ async componentDidMount(){
       })
 
       setTimeout(() => {
-        this.setState({
+        this.setState({...this.state,
           EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -256,7 +267,7 @@ async componentDidMount(){
           }
       })
       setTimeout(() => {
-        this.setState({
+        this.setState({...this.state,
         Disabled:false,
         AttackStyle:{
           width:'450px',
@@ -287,19 +298,16 @@ async componentDidMount(){
         if(ele.Health > 0){
           ele.Health -= 10
         }
-        if(ele.Health <= 0){
-          ele.Health = 'Dead'
-        }
         return ele
       })
 
-        this.setState({
+        this.setState({...this.state,
             EnemyRobot:updateEnemy,
             Disabled:true,
         })
       }, 1000)
       
-      this.setState({
+      this.setState({...this.state,
         PlayerAttack:'',
         Checked:NaN,
         AttackStyle:{
@@ -342,7 +350,7 @@ async componentDidMount(){
           return ele
         })
         if(enemyChoice === 1){
-          this.setState({
+          this.setState({...this.state,
         YourRobot:updatePlayer,
         EnemyRobot: healEnemy,
         EnemyAttackStyle:{
@@ -357,13 +365,13 @@ async componentDidMount(){
         }
         })
         }else{
-          this.setState({
+          this.setState({...this.state,
         YourRobot:updatePlayer,
         })
         }
       }, 1000)
         if(enemyChoice === 0){
-        this.setState({
+        this.setState({...this.state,
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
@@ -389,12 +397,12 @@ async componentDidMount(){
           }
       })
       setTimeout(() => {
-          this.setState({
+          this.setState({...this.state,
             Disabled:false,
           })
       },1000)
         }else{
-          this.setState({
+          this.setState({...this.state,
         Disabled:false,
         AttackStyle:{
           width:'450px',
@@ -411,14 +419,16 @@ async componentDidMount(){
         
         
 
-        if(this.state.EnemyRobot[0].Health === 'Dead'){
-      let newEnemyRobot = await this.state.EnemyRobots.find((ele) => {
-        if(ele.id !== this.state.EnemyRobot[0].id){
-          return ele
-        }
-        return null
-      })
-      this.setState({
+        if(this.state.EnemyRobot[0].Health <= 0){
+          let enemyId = await this.state.EnemyRobot.find((ele) => {
+            return ele.id
+          });
+          let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
+          .then((res) => {
+            return res.data;
+          })
+          .catch((err) => console.log(err));
+      this.setState({...this.state,
         EnemyRobot:[newEnemyRobot],
         Disabled:false,
         AttackStyle:{
@@ -430,7 +440,17 @@ async componentDidMount(){
           backgroundColor:'rgba(211, 211, 211, 0.850)',
           color:'black',
           borderRadius:'8px'
-          }
+          },
+          EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+            backgroundColor:'rgba(211, 211, 211, 0.850)',
+            color:'black',
+            borderRadius:'8px'
+        },
       })
     }
       }, 2000)
@@ -441,14 +461,14 @@ async componentDidMount(){
   };
     
   onChange = (e) => {
-    this.setState({
+    this.setState({...this.state,
       PlayerAttack:e.target.value,
       Checked:e.target.id
     })
   };
 
   onPointerEnter = () => {
-        this.setState({
+        this.setState({...this.state,
       GitHubLinkStyle:{
         listStyleType:'none',
         position:'relative',
@@ -460,7 +480,7 @@ async componentDidMount(){
     })
   };
   onPointerLeave = () => {
-    this.setState({
+    this.setState({...this.state,
       GitHubLinkStyle:{
         display:'none'
       }
@@ -476,16 +496,19 @@ async componentDidMount(){
           <YourRobot 
           YourRobot={this.state.YourRobot}></YourRobot></Route>
         <Route path='/SingleBattle'>
-          <OneFight 
-          YourRobot={this.state.YourRobot}
-          EnemyRobot={this.state.EnemyRobot}
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          Checked={this.state.Checked}
-          disabled={this.state.Disabled}
-          AttackStyle={this.state.AttackStyle}
-           EnemyStyle={this.state.EnemyAttackStyle}
-        ></OneFight></Route>
+            <OneFight 
+              YourRobot={this.state.YourRobot}
+              EnemyRobot={this.state.EnemyRobot}
+              onSubmit={this.onSubmit}
+              onChange={this.onChange}
+              Checked={this.state.Checked}
+              disabled={this.state.Disabled}
+              AttackStyle={this.state.AttackStyle}
+              EnemyStyle={this.state.EnemyAttackStyle}
+            ></OneFight>
+          </Route>
+          <Route path='/YouLose'><YouLose></YouLose></Route>
+        <Route  path=''><Error></Error></Route>
       </Switch>
     </div>
   );
