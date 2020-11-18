@@ -1,18 +1,12 @@
 import React from 'react';
 import RobotFightCard from './RobotFightCard'
 import EnemyFightCard from './EnemyFightCard'
-import {Redirect} from 'react-router-dom'
 import YourRobotPic from '../pictures/YourRobotPic.jpg';
 import Robot1 from '../pictures/Robot1.jpg'
 class OneFight extends React.Component {
 
 
-Redirect = () => {
-    return <Redirect to='/'></Redirect>
-}
-youLose = () => {
-    return <Redirect to='/YouLose'></Redirect>
-}
+
     render() { 
         return ( 
             <div className='FightPage' style={FightPageStyle}>
@@ -21,9 +15,6 @@ youLose = () => {
                 </header>
                 <div style={containerStyle}>
                 {this.props.YourRobot.map((ele) => {
-                    if(ele.Health <= 0){
-                        return this.youLose()
-                    }else{
                         return(
                         <RobotFightCard key={ele.id} 
                         Name={ele.name} 
@@ -39,16 +30,12 @@ youLose = () => {
                         RobotImage={YourRobotPic}
                         ></RobotFightCard>
                     )
-                    }
                 })}
                 <div>
                 </div>
 
                 <div>
                     {this.props.EnemyRobot.map((ele, index) => {
-                        if(ele.Health <= 0){
-                                return  this.Redirect()
-                            }else{ 
                         return(
                             <EnemyFightCard
                             key={ele.id}
@@ -57,8 +44,7 @@ youLose = () => {
                             EnemyStyle={this.props.EnemyStyle}
                             EnemyRobotPic={Robot1}
                             ></EnemyFightCard>
-                            )
-                }
+                        )
                 })}
                 </div>
                 </div>

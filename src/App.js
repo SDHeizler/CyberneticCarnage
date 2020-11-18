@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import Robots from './RobotsDatabasetest';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
@@ -8,6 +8,8 @@ import YourRobot from './components/YourRobot';
 import OneFight from './components/OneFight';
 import Error from './components/404';
 import YouLose from './components/YouLose';
+import YouWin from './components/YouWin';
+import Reset from './components/Reset';
 import axios from 'axios';
 
 
@@ -46,6 +48,7 @@ class App extends React.Component {
         GitHubLinkStyle:{
           display:'none'
         },
+        buttonText:'Continue',
       
     }
   }
@@ -84,6 +87,9 @@ async componentDidMount(){
         EnemyRobots:getEnemyRobots,
     });
          let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
+      if(this.state.EnemyRobot.length < 1){
+        
+      }
     let findEnemyRobot = await this.state.EnemyRobots.find((ele,index) => {
         if(index === enemyNum){
             return ele
@@ -123,10 +129,7 @@ async componentDidMount(){
             borderRadius:'8px'
         }
       })
-
      let enemyChoice = Math.floor(Math.random() * Math.floor(2));
-
-
     if(this.state.PlayerAttack === 'Heal'){
         let newPlayerHealth = this.state.YourRobot.map((ele) => {
         ele.Health = 100
@@ -157,7 +160,6 @@ async componentDidMount(){
         })
         if(enemyChoice === 1){
         this.setState({...this.state,
-        YourRobot:updatePlayer,
         EnemyRobot: healEnemy,
         EnemyAttackStyle:{
           width:'450px',
@@ -337,7 +339,10 @@ async componentDidMount(){
       
       setTimeout( async() => {
         setTimeout( () => {
-        let updatePlayer =  this.state.YourRobot.map((ele) => {
+          if(this.state.EnemyRobot[0].Health <= 0){
+          this.props.history.push('/YouWin')
+        }else{
+          let updatePlayer =  this.state.YourRobot.map((ele) => {
           if(enemyChoice === 0){
             ele.Health -= 10;
           }
@@ -351,7 +356,6 @@ async componentDidMount(){
         })
         if(enemyChoice === 1){
           this.setState({...this.state,
-        YourRobot:updatePlayer,
         EnemyRobot: healEnemy,
         EnemyAttackStyle:{
           width:'450px',
@@ -369,6 +373,8 @@ async componentDidMount(){
         YourRobot:updatePlayer,
         })
         }
+        }
+        
       }, 1000)
         if(enemyChoice === 0){
         this.setState({...this.state,
@@ -416,47 +422,7 @@ async componentDidMount(){
           },
       })
         }
-        
-        
-
-        if(this.state.EnemyRobot[0].Health <= 0){
-          let enemyId = await this.state.EnemyRobot.find((ele) => {
-            return ele.id
-          });
-          let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
-          .then((res) => {
-            return res.data;
-          })
-          .catch((err) => console.log(err));
-      this.setState({...this.state,
-        EnemyRobot:[newEnemyRobot],
-        Disabled:false,
-        AttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'1px solid black',
-          display:'inline-block',
-          position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
-          borderRadius:'8px'
-          },
-          EnemyAttackStyle: {
-            width:'450px',
-            marginLeft:'0',
-            border:'1px solid black',
-            display:'inline-block',
-            position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
-            borderRadius:'8px'
-        },
-      })
-    }
       }, 2000)
-      
-
-    
     }
   };
     
@@ -486,6 +452,53 @@ async componentDidMount(){
       }
     })
   };
+
+  youWinButton = async () => {
+     let newPlayerHealth = this.state.YourRobot.map((ele) => {
+        ele.Health = 100
+        return ele
+      });
+        let enemyId = this.state.EnemyRobot[0].id;
+          let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
+          .then((res) => {
+            console.log(res.data)
+            return res.data;
+          })
+          .catch((err) => console.log(err));
+        if(!newEnemyRobot){
+          this.props.history.push('/Reset')
+        }else{
+            this.setState({...this.state,
+        YourRobot:newPlayerHealth,
+        EnemyRobot:[newEnemyRobot],
+        Disabled:false,
+        AttackStyle:{
+          width:'450px',
+          marginLeft:'0',
+          border:'1px solid black',
+          display:'inline-block',
+          position:'relative',
+          backgroundColor:'rgba(211, 211, 211, 0.850)',
+          color:'black',
+          borderRadius:'8px'
+          },
+          EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'1px solid black',
+            display:'inline-block',
+            position:'relative',
+            backgroundColor:'rgba(211, 211, 211, 0.850)',
+            color:'black',
+            borderRadius:'8px'
+        },
+      });
+      this.props.history.push('/');
+        };  
+  };
+  resetButton = () => {
+    console.log('click')
+  };
   render(){
   return (
     <div className="App">
@@ -508,6 +521,11 @@ async componentDidMount(){
             ></OneFight>
           </Route>
           <Route path='/YouLose'><YouLose></YouLose></Route>
+          <Route path='/YouWin'>
+            <YouWin
+            onClick={this.youWinButton}
+            ></YouWin></Route>
+            <Route path='/Reset'><Reset onClick={this.resetButton}></Reset></Route>
         <Route  path=''><Error></Error></Route>
       </Switch>
     </div>
@@ -516,4 +534,4 @@ async componentDidMount(){
 };
 
 
-export default App;
+export default withRouter(App);
