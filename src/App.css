@@ -57,7 +57,9 @@ a:hover {
 }
 .HomePage,
 .FightPage,
-.YourRobotPage {
+.YourRobotPage,
+.ResetPage,
+.YouWinPage {
   background-image: url("./pictures/roboticbackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
