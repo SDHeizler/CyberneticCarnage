@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import Robots from './RobotsDatabasetest';
-import NavBar from './components/NavBar';
 import Home from './components/Home';
 import YourRobot from './components/YourRobot';
 import OneFight from './components/OneFight';
@@ -28,21 +27,17 @@ class App extends React.Component {
         AttackStyle:{
         width:'450px',
         marginLeft:'0',
-        border:'1px solid black',
+        border:'5px solid black',
         display:'inline-block',
         position:'relative',
-        backgroundColor:'rgba(211, 211, 211, 0.850)',
-        color:'black',
         borderRadius:'8px'
 },
         EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
         },
         GitHubLinkStyle:{
@@ -111,21 +106,17 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
         },
         EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
         }
       })
@@ -167,8 +158,6 @@ async componentDidMount(){
           border:'5px solid Green',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
         }
         })
@@ -183,24 +172,20 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
           EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
           animationName:'EnemyAttack',
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           }
       })
@@ -215,11 +200,9 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
       })
@@ -233,8 +216,6 @@ async componentDidMount(){
         border:'5px solid Gold',
         display:'inline-block',
         position:'relative',
-        backgroundColor:'rgba(211, 211, 211, 0.850)',
-        color:'black',
         borderRadius:'8px'
         },
         PlayerAttack:'',
@@ -243,11 +224,9 @@ async componentDidMount(){
         EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
         },
       })
@@ -257,14 +236,12 @@ async componentDidMount(){
           EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
           animationName:'EnemyAttack',
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           }
       })
@@ -274,21 +251,17 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
         EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           }
       })
@@ -315,24 +288,20 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
           animationName:'Attack',
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
         },
         EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
         }
       })
@@ -348,21 +317,17 @@ async componentDidMount(){
             AttackStyle:{
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
           },
             EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
           },
           });
@@ -390,8 +355,6 @@ async componentDidMount(){
           border:'5px solid Green',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
         }
         })
@@ -408,24 +371,20 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
           EnemyAttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
           animationName:'EnemyAttack',
           animationDuration:'1s',
           animationTimingFunction:'ease-in',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           }
       })
@@ -440,11 +399,9 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
       })
@@ -487,7 +444,8 @@ async componentDidMount(){
         ele.Health = 100
         return ele
       });
-        let enemyId = this.state.EnemyRobot[0].id;
+        let enemyId = this.state.EnemyRobot[0]._id;
+        console.log(enemyId)
           let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
           .then((response) => {
             return response.data;
@@ -503,21 +461,17 @@ async componentDidMount(){
         AttackStyle:{
           width:'450px',
           marginLeft:'0',
-          border:'1px solid black',
+          border:'5px solid black',
           display:'inline-block',
           position:'relative',
-          backgroundColor:'rgba(211, 211, 211, 0.850)',
-          color:'black',
           borderRadius:'8px'
           },
           EnemyAttackStyle: {
             width:'450px',
             marginLeft:'0',
-            border:'1px solid black',
+            border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            backgroundColor:'rgba(211, 211, 211, 0.850)',
-            color:'black',
             borderRadius:'8px'
         },
       });
@@ -525,7 +479,8 @@ async componentDidMount(){
         };  
   };
   resetButton = async () => {
-    let resetRobots = await axios.put('http://localhost:8000/',
+    console.log('click')
+    let resetRobots = await axios.post('http://localhost:8000/',
     {
       Robots
     })
@@ -544,14 +499,27 @@ async componentDidMount(){
   render(){
   return (
     <div className="App">
-      <NavBar onClick={this.resetButton} onPointerLeave={this.onPointerLeave} onPointerEnter={this.onPointerEnter} GitHubLinkStyle={this.state.GitHubLinkStyle}></NavBar>
       <Switch>
-        <Route exact path='/'><Home></Home></Route>
+        <Route exact path='/'>
+        <Home
+        onClick={this.resetButton} 
+        onPointerLeave={this.onPointerLeave} 
+        onPointerEnter={this.onPointerEnter} 
+        GitHubLinkStyle={this.state.GitHubLinkStyle}
+        ></Home></Route>
         <Route path='/YourRobot'>
-          <YourRobot 
+          <YourRobot
+          onClick={this.resetButton} 
+          onPointerLeave={this.onPointerLeave} 
+          onPointerEnter={this.onPointerEnter} 
+          GitHubLinkStyle={this.state.GitHubLinkStyle} 
           YourRobot={this.state.YourRobot}></YourRobot></Route>
         <Route path='/SingleBattle'>
             <OneFight 
+              onClick={this.resetButton} 
+              onPointerLeave={this.onPointerLeave} 
+              onPointerEnter={this.onPointerEnter} 
+              GitHubLinkStyle={this.state.GitHubLinkStyle}
               YourRobot={this.state.YourRobot}
               EnemyRobot={this.state.EnemyRobot}
               onSubmit={this.onSubmit}

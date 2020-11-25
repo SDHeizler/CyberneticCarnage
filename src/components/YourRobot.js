@@ -1,6 +1,7 @@
 import React from 'react';
-import YourRobotStats from './YourRobotStats'
-import YourRobotPic from '../pictures/YourRobotPic.jpg'
+import YourRobotStats from './YourRobotStats';
+import YourRobotPic from '../pictures/YourRobotPic.jpg';
+import NavBar from './NavBar';
 class YourRobot extends React.Component {
     constructor(props){
         super(props)
@@ -11,11 +12,16 @@ class YourRobot extends React.Component {
     render() { 
         return ( 
             <div className='YourRobotPage' style={YourRobotPageStyle}>
-                <h1>YourRobot</h1>
+                <NavBar
+                onClick={this.props.onClick} 
+                onPointerLeave={this.props.onPointerLeave} 
+                onPointerEnter={this.props.onPointerEnter} 
+                GitHubLinkStyle={this.props.GitHubLinkStyle}
+                ></NavBar>
                 {this.props.YourRobot.map((ele) => {
                         return(
                             <YourRobotStats
-                            key={ele.id}
+                            key={ele._id}
                             name={ele.name}
                             health={ele.Health}
                             attacks={ele.Attacks}

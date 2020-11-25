@@ -5,7 +5,7 @@ class EnemyFightCard extends React.Component {
     render() { 
         
         return ( 
-            <div style={this.props.EnemyStyle}>
+            <div className='bg-dark text-white' style={this.props.EnemyStyle}>
                 <h3>{this.props.Name}</h3>
                 <img style={EnemyImageStyle} src={this.props.EnemyRobotPic} alt=''></img>
                 <h4>Health:{this.props.Health}%</h4>

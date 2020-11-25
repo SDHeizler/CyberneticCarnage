@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import NavBar from './NavBar'
 class Home extends React.Component {
     render() { 
         return ( 
             <div className='HomePage' style={HomePageStyle}>
+                <NavBar onClick={this.props.onClick} onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} GitHubLinkStyle={this.props.GitHubLinkStyle}></NavBar>
                 <div className='jubotron jubotron-fluid'>
                     <h1 className='display-3'>Welcome to Cybernetic Carnage</h1>
                     <p className='lead'>Get ready for battle!</p>
@@ -12,7 +14,7 @@ class Home extends React.Component {
                 <Link className='LinkHover' style={LinkStyle} to='/YourRobot'>YourRobot</Link>
                 <Link className="LinkHover" style={LinkStyle}  to='/SingleBattle'>Battle</Link>
                 </div>
-                <footer style={FooterStyle}>
+                <footer className='bg-dark text-white' style={FooterStyle}>
                     <h4 style={FooterCopyrightStyle}>&#169; 2020 Scott Heizler</h4>
                 </footer>
             </div>
@@ -35,11 +37,8 @@ const HomePageStyle = {
    
 };
 const FooterStyle = {
-    backgroundColor:'#234691',
     height:'50px',
-    marginBottom:'0px',
     width:'100%',
-    marginTop:'100%',
     position:'absolute',
     bottom:'0'
 

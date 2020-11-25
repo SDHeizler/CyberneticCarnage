@@ -5,7 +5,7 @@ class RobotFightCard extends React.Component {
     
     render() { 
         return ( 
-            <div className='YourRobot' style={this.props.AttackStyle}>
+            <div className='YourRobot bg-dark text-white' style={this.props.AttackStyle}>
                 <h3>{this.props.Name}</h3>
                 <img style={RobotImageStyle} src={this.props.RobotImage} alt=''></img>
                 <h4>Health: {this.props.Health}%</h4>

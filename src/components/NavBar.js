@@ -5,7 +5,7 @@ class NavBar extends React.Component {
 
     render() { 
         return ( 
-            <div style={NavBarStyle}>
+            <div className='bg-dark text-white' style={NavBarStyle}>
                 <button onClick={this.props.onClick} className='btn-danger' style={NavBarResetStyle}>Reset</button>
                 <h4 style={TitleStyle}>Cybernetic Carnage</h4>
                 <div style={LinkContainerStyle}>
@@ -15,9 +15,9 @@ class NavBar extends React.Component {
                 <div style={containerHamburgerMenu}>
                     <img onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={imgStyle} src={Menu} alt=''></img>
                     <div style={containerGitHubLink}>
-                    <ul onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={this.props.GitHubLinkStyle}>
-                        <li style={ListItemStyle}><a style={hrefStyle} href='#'>Github</a></li>
-                        <li style={ListItemStyle}><a style={hrefStyle} href='#'>Portfolio</a></li>
+                    <ul  className='bg-dark text-white' onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={this.props.GitHubLinkStyle}>
+                        <li style={ListItemStyle}><a target='_blank' style={hrefStyle} href='#'>Github</a></li>
+                        <li style={ListItemStyle}><a style={hrefStyle} href='https://sdheizler.github.io/MyPortfolio/' target='_blank'>Portfolio</a></li>
                     </ul>
                     </div>
                 </div>

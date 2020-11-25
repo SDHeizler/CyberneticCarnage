@@ -1,8 +1,9 @@
 import React from 'react';
-import RobotFightCard from './RobotFightCard'
-import EnemyFightCard from './EnemyFightCard'
+import RobotFightCard from './RobotFightCard';
+import EnemyFightCard from './EnemyFightCard';
 import YourRobotPic from '../pictures/YourRobotPic.jpg';
-import Robot1 from '../pictures/Robot1.jpg'
+import Robot1 from '../pictures/Robot1.jpg';
+import NavBar from './NavBar';
 class OneFight extends React.Component {
 
 
@@ -10,13 +11,18 @@ class OneFight extends React.Component {
     render() { 
         return ( 
             <div className='FightPage' style={FightPageStyle}>
+                <NavBar
+                onClick={this.props.onClick} 
+                onPointerLeave={this.props.onPointerLeave} 
+                onPointerEnter={this.props.onPointerEnter} 
+                GitHubLinkStyle={this.props.GitHubLinkStyle}></NavBar>
                 <header>
                 <h1>Battle!</h1>
                 </header>
                 <div style={containerStyle}>
                 {this.props.YourRobot.map((ele) => {
                         return(
-                        <RobotFightCard key={ele.id} 
+                        <RobotFightCard key={ele._id} 
                         Name={ele.name} 
                         Attacks={ele.Attacks.map((ele, index) => {
                             return ele
@@ -38,7 +44,7 @@ class OneFight extends React.Component {
                     {this.props.EnemyRobot.map((ele, index) => {
                         return(
                             <EnemyFightCard
-                            key={ele.id}
+                            key={ele._id}
                             Health={ ele.Health}
                             Name={ ele.name }
                             EnemyStyle={this.props.EnemyStyle}

@@ -1,6 +1,5 @@
 const Robots = [
     {
-        id:1,
         name:'Robot One',
         Health:100,
         PlayerRobot: true,
@@ -9,21 +8,17 @@ const Robots = [
         ]
     },
     {
-        id:2,
         name:'Robot Two',
         Health:100,
         PlayerRobot: false,
         Attacks:[
-            'FlameThrower', 'Kick', 'Punch'
         ]
     },
     {
-        id:3,
         name:'Robot Three',
         Health:100,
         PlayerRobot: false,
         Attacks:[
-            'FlameThrower', 'Kick', 'Punch'
         ]
     },
 ];
