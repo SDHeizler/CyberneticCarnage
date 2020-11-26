@@ -9,14 +9,14 @@ const Robots = [
     },
     {
         name:'Robot Two',
-        Health:100,
+        Health:10,
         PlayerRobot: false,
         Attacks:[
         ]
     },
     {
         name:'Robot Three',
-        Health:100,
+        Health:10,
         PlayerRobot: false,
         Attacks:[
         ]

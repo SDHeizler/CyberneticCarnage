@@ -100,6 +100,7 @@ async componentDidMount(){
   onSubmit = async (e, prop) => {
     e.preventDefault();
 
+    // Resetting the stored css style in state
     this.setState({ ...this.state,
         PlayerAttack:'',
         Checked:NaN,
@@ -119,54 +120,50 @@ async componentDidMount(){
             position:'relative',
             borderRadius:'8px'
         }
-      })
+      });
+      // Declairing and storing the enemy choice for the turn
      let enemyChoice = Math.floor(Math.random() * Math.floor(2));
+    //  Playing out if player chooses to heal
     if(this.state.PlayerAttack === 'Heal'){
+      // Declaired and stored the update to the player health
         let newPlayerHealth = this.state.YourRobot.map((ele) => {
-        ele.Health = 100
-        return ele
-      })
+          if(ele.Health !== 100){
+              ele.Health = 100
+          }
+          return ele
+      });
+      // Updated state to show new player health
       this.setState({...this.state,
         YourRobot:newPlayerHealth,
         Disabled:true,
         PlayerAttack:'',
         Checked:NaN,
       })
-    
+    // Starting enemy turn
       setTimeout(() => {
         setTimeout( () => {
-        let updatePlayer =  this.state.YourRobot.map((ele) => {
-          if(ele.Health > 0){
-          ele.Health -= 10
-        }
-        return ele
-        })
+          if(enemyChoice === 1){
         let healEnemy = this.state.EnemyRobot.map((ele) => {
-          if(enemyChoice === 1 && ele.Health < 100){
-            ele.Health += 5
-          }else{
-            return ele
-          }
-          return ele
-        })
-        if(enemyChoice === 1){
-        this.setState({...this.state,
-        EnemyRobot: healEnemy,
-        EnemyAttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'5px solid Green',
-          display:'inline-block',
-          position:'relative',
-          borderRadius:'8px'
-        }
-        })
-        }else{
-        this.setState({...this.state,
-        YourRobot:updatePlayer,
-        })
+            if(ele.Health < 100){
+              ele.Health += 5
+            }
+            return ele;
+          })
+            this.setState({...this.state,
+            EnemyRobot: healEnemy,
+            EnemyAttackStyle:{
+            width:'450px',
+            marginLeft:'0',
+            border:'5px solid Green',
+            display:'inline-block',
+            position:'relative',
+            borderRadius:'8px'
+          },
+          Disabled:false
+            })
         }
       }, 1000)
+
         if(enemyChoice === 0){
         this.setState({...this.state,
         AttackStyle:{
@@ -190,22 +187,25 @@ async componentDidMount(){
           }
       })
       setTimeout(() =>{
+        let updatePlayer =  this.state.YourRobot.map((ele) => {
+            if(ele.Health > 0){
+            ele.Health -= 10
+          }
+            return ele
+          });
         this.setState({...this.state,
-          Disabled:false
+          Disabled:false,
+          YourRobot:updatePlayer,
+            EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'5px solid black',
+            display:'inline-block',
+            position:'relative',
+            borderRadius:'8px'
+        }
         })
       }, 1000)
-        }else{
-          this.setState({...this.state,
-        Disabled:false,
-        AttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'5px solid black',
-          display:'inline-block',
-          position:'relative',
-          borderRadius:'8px'
-          },
-      })
         }
       }, 2000)
     }else if(this.state.PlayerAttack === 'Defend'){
@@ -304,68 +304,53 @@ async componentDidMount(){
             position:'relative',
             borderRadius:'8px'
         }
-      })
+      });
       
-      setTimeout( async() => {
-         if(this.state.EnemyRobot[0].Health <= 0){
-          this.setState({
-            ...this.state,
-            PlayerAttack:'',
-            Checked:NaN,
-            PlayerHealthPer:'',
-            Disabled:false,
-            AttackStyle:{
-            width:'450px',
-            marginLeft:'0',
-            border:'5px solid black',
-            display:'inline-block',
-            position:'relative',
-            borderRadius:'8px'
-          },
-            EnemyAttackStyle: {
-            width:'450px',
-            marginLeft:'0',
-            border:'5px solid black',
-            display:'inline-block',
-            position:'relative',
-            borderRadius:'8px'
-          },
-          });
-          this.props.history.push('/YouWin')
-        }else{
-            setTimeout( () => {
-          let updatePlayer =  this.state.YourRobot.map((ele) => {
-          if(enemyChoice === 0){
-            ele.Health -= 10;
-          }
-          return ele
-        })
+          setTimeout(() => {
+            if(this.state.EnemyRobot[0].Health <= 0){
+              this.setState({
+                  AttackStyle:{
+                    width:'450px',
+                    marginLeft:'0',
+                    border:'5px solid black',
+                    display:'inline-block',
+                    position:'relative',
+                    borderRadius:'8px'
+                  },
+                  EnemyAttackStyle: {
+                    width:'450px',
+                    marginLeft:'0',
+                    border:'5px solid black',
+                    display:'inline-block',
+                    position:'relative',
+                    borderRadius:'8px'
+                  },
+              });
+              this.props.history.push('/YouWin');
+            }else{
+              setTimeout( () => {
+          if(enemyChoice === 1){
         let healEnemy = this.state.EnemyRobot.map((ele) => {
-          if(enemyChoice === 1 && ele.Health < 100){
-            ele.Health += 5
-          }
-          return ele
-        })
-        if(enemyChoice === 1){
-          this.setState({...this.state,
-        EnemyRobot: healEnemy,
-        EnemyAttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'5px solid Green',
-          display:'inline-block',
-          position:'relative',
-          borderRadius:'8px'
+            if(ele.Health < 100){
+              ele.Health += 5
+            }
+            return ele;
+          })
+            this.setState({...this.state,
+            EnemyRobot: healEnemy,
+            EnemyAttackStyle:{
+            width:'450px',
+            marginLeft:'0',
+            border:'5px solid Green',
+            display:'inline-block',
+            position:'relative',
+            borderRadius:'8px'
+          },
+          Disabled:false
+            })
         }
-        })
-        }else{
-          this.setState({...this.state,
-        YourRobot:updatePlayer,
-        })
-        }
-        
-        
       }, 1000)
+
         if(enemyChoice === 0){
         this.setState({...this.state,
         AttackStyle:{
@@ -388,27 +373,31 @@ async componentDidMount(){
           borderRadius:'8px'
           }
       })
-      setTimeout(() => {
-          this.setState({...this.state,
-            Disabled:false,
-          })
-      },1000)
-        }else{
-          this.setState({...this.state,
-        Disabled:false,
-        AttackStyle:{
-          width:'450px',
-          marginLeft:'0',
-          border:'5px solid black',
-          display:'inline-block',
-          position:'relative',
-          borderRadius:'8px'
-          },
-      })
+      setTimeout(() =>{
+        let updatePlayer =  this.state.YourRobot.map((ele) => {
+            if(ele.Health > 0){
+            ele.Health -= 10
+          }
+            return ele
+          });
+        this.setState({...this.state,
+          Disabled:false,
+          YourRobot:updatePlayer,
+            EnemyAttackStyle: {
+            width:'450px',
+            marginLeft:'0',
+            border:'5px solid black',
+            display:'inline-block',
+            position:'relative',
+            borderRadius:'8px'
         }
+        })
+      }, 1000)
         }
+            }
         
       }, 2000)
+       
     }
   };
     
@@ -445,18 +434,18 @@ async componentDidMount(){
         return ele
       });
         let enemyId = this.state.EnemyRobot[0]._id;
-        console.log(enemyId)
           let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
           .then((response) => {
+            console.log(response.data)
             return response.data;
           })
           .catch((err) => console.log(err));
-        if(!newEnemyRobot){
+        if(!newEnemyRobot || newEnemyRobot.length < 1){
           this.props.history.push('/Reset')
         }else{
             this.setState({...this.state,
         YourRobot:newPlayerHealth,
-        EnemyRobot:[newEnemyRobot],
+        EnemyRobot:newEnemyRobot,
         Disabled:false,
         AttackStyle:{
           width:'450px',
@@ -479,7 +468,6 @@ async componentDidMount(){
         };  
   };
   resetButton = async () => {
-    console.log('click')
     let resetRobots = await axios.post('http://localhost:8000/',
     {
       Robots
@@ -493,6 +481,14 @@ async componentDidMount(){
     this.setState({
       ...this.state,
       Robots:resetRobots
+    });
+   let getEnemyRobot =  this.state.Robots.find((ele) => {
+      if(ele.PlayerRobot === false){
+        return ele
+      }
+    });
+    this.setState({
+      EnemyRobot:[getEnemyRobot]
     });
     this.props.history.push('/');
   };
