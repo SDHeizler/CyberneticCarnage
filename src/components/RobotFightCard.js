@@ -47,11 +47,11 @@ const formStyle={
     
 };
 const RobotImageStyle = {
-    height:'250px',
-    width:'250px'
+    height:'150px',
+    width:'150px'
 };
 const LabelInputStyle = {
     fontSize:'20px',
-    marginTop:'10px'
+    marginTop:'10px',
 }
 export default RobotFightCard;

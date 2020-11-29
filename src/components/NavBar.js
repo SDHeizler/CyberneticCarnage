@@ -39,6 +39,7 @@ const NavBarLinkStyle = {
     color:'White',
     textDecoration:'none',
     fontSize:'20px',
+    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const imgStyle = {
     height:'25px',
@@ -60,6 +61,7 @@ const containerHamburgerMenu = {
 };
 const ListItemStyle = {
     borderBottom:'1px solid black',
+    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const hrefStyle={
     color:'White',
@@ -71,6 +73,7 @@ const NavBarResetStyle = {
     borderRadius:'7px'
 };
 const TitleStyle = {
-    marginRight:'60vw'
+    marginRight:'60vw',
+    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 export default NavBar;

@@ -8,7 +8,7 @@ class Home extends React.Component {
                 <NavBar onClick={this.props.onClick} onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} GitHubLinkStyle={this.props.GitHubLinkStyle}></NavBar>
                 <div className='jubotron jubotron-fluid'>
                     <h1 className='display-3'>Welcome to Cybernetic Carnage</h1>
-                    <p className='lead'>Get ready for battle!</p>
+                    <p className='lead' style={{fontSize:'30px'}}>Get ready for battle!</p>
                 </div>
                 <div className='homeStyleNav' style={HomeStyleNav}>
                 <Link className='LinkHover' style={LinkStyle} to='/YourRobot'>YourRobot</Link>
@@ -29,7 +29,8 @@ const HomeStyleNav = {
 };
 const LinkStyle = {
     textDecoration:'none',
-    color:'White'
+    color:'White',
+    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const HomePageStyle = {
     color:'White',
