@@ -15,7 +15,7 @@ class Home extends React.Component {
                 <Link className="LinkHover" style={LinkStyle}  to='/SingleBattle'>Battle</Link>
                 </div>
                 <footer className='bg-dark text-white' style={FooterStyle}>
-                    <h4 style={FooterCopyrightStyle}>&#169; 2020 Scott Heizler</h4>
+                    <h4>&#169; 2020 Scott Heizler</h4>
                 </footer>
             </div>
          );
@@ -38,13 +38,11 @@ const HomePageStyle = {
    
 };
 const FooterStyle = {
-    height:'50px',
+    height:'55px',
     width:'100%',
     position:'absolute',
     bottom:'0'
 
 };
-const FooterCopyrightStyle = {
 
-};
 export default Home;

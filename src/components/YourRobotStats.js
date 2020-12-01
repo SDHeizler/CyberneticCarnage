@@ -3,7 +3,7 @@ class YourRobotStats extends React.Component {
     render() { 
         return ( 
             <div style={DivContStyle} className='bg-dark text-white '>
-                    <h1 style={{fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'}}>Name: {this.props.name}</h1>
+                    <h1 id='YourRobotName' style={{fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif', fontSize:'3vw'}}>Name: {this.props.name}</h1>
                     <div style={DivSize}>
                     <img style={YourRobotImageStyle} src={this.props.RobotImage} alt=''></img>
                     <ul style={UlListStyle}>
@@ -37,24 +37,24 @@ const DivSize = {
 
 };
 const YourRobotImageStyle = {
-    height:'25vh',
+    height:'auto',
     width:'15vw',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const YourRobotStatsStyle = {
-    fontSize:'35px',
+    fontSize:'3.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 }
 const YourRobotHealthStyle = {
-    fontSize:'25px',
+    fontSize:'2.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const YourRobotAttackStyle = {
-    fontSize:'35px',
+    fontSize:'3.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const YourRobotAttackListStyle = {
-    fontSize:'25px',
+    fontSize:'2.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
 };
 const DivContStyle = {

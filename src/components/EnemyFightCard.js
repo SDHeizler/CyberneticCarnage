@@ -8,14 +8,14 @@ class EnemyFightCard extends React.Component {
             <div className='bg-dark text-white' style={this.props.EnemyStyle}>
                 <h3>{this.props.Name}</h3>
                 <img style={EnemyImageStyle} src={this.props.EnemyRobotPic} alt=''></img>
-                <h4>Health:{this.props.Health}%</h4>
+                <h4 style={{transition:'ease-in, 200ms'}} id='EnemyRobotHealth'>Health:{this.props.Health}%</h4>
                 <HealthBar Health={this.props.Health}></HealthBar>
             </div>
             );
     }
 }
 const EnemyImageStyle = {
-    height:'250px',
-    width:'250px'
+    height:'auto',
+    width:'9vw'
 }
 export default EnemyFightCard;

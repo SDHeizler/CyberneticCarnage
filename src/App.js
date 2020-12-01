@@ -25,7 +25,7 @@ class App extends React.Component {
         PlayerHealthPer:'',
         Disabled:false,
         AttackStyle:{
-        width:'350px',
+        width:'25vw',
         marginLeft:'0',
         border:'5px solid black',
         display:'inline-block',
@@ -33,12 +33,12 @@ class App extends React.Component {
         borderRadius:'8px'
 },
         EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
             position:'relative',
-            borderRadius:'8px'
+            borderRadius:'8px',
         },
         GitHubLinkStyle:{
           display:'none'
@@ -105,7 +105,7 @@ async componentDidMount(){
         PlayerAttack:'',
         Checked:NaN,
         AttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -113,7 +113,7 @@ async componentDidMount(){
           borderRadius:'8px'
         },
         EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -152,7 +152,7 @@ async componentDidMount(){
             this.setState({...this.state,
             EnemyRobot: healEnemy,
             EnemyAttackStyle:{
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid Green',
             display:'inline-block',
@@ -167,7 +167,7 @@ async componentDidMount(){
         if(enemyChoice === 0){
         this.setState({...this.state,
         AttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -175,7 +175,7 @@ async componentDidMount(){
           borderRadius:'8px'
           },
           EnemyAttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -197,7 +197,7 @@ async componentDidMount(){
           Disabled:false,
           YourRobot:updatePlayer,
             EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -211,7 +211,7 @@ async componentDidMount(){
     }else if(this.state.PlayerAttack === 'Defend'){
       this.setState({...this.state,
         AttackStyle:{
-        width:'350px',
+        width:'25vw',
         marginLeft:'0',
         border:'5px solid Gold',
         display:'inline-block',
@@ -222,7 +222,7 @@ async componentDidMount(){
         Checked:NaN,
         Disabled:true,
         EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -234,7 +234,7 @@ async componentDidMount(){
       setTimeout(() => {
         this.setState({...this.state,
           EnemyAttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -249,7 +249,7 @@ async componentDidMount(){
         this.setState({...this.state,
         Disabled:false,
         AttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -257,7 +257,7 @@ async componentDidMount(){
           borderRadius:'8px'
           },
         EnemyAttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -286,7 +286,7 @@ async componentDidMount(){
         PlayerAttack:'',
         Checked:NaN,
         AttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -297,7 +297,7 @@ async componentDidMount(){
           borderRadius:'8px'
         },
         EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -310,7 +310,7 @@ async componentDidMount(){
             if(this.state.EnemyRobot[0].Health <= 0){
               this.setState({
                   AttackStyle:{
-                    width:'350px',
+                    width:'25vw',
                     marginLeft:'0',
                     border:'5px solid black',
                     display:'inline-block',
@@ -318,7 +318,7 @@ async componentDidMount(){
                     borderRadius:'8px'
                   },
                   EnemyAttackStyle: {
-                    width:'350px',
+                    width:'25vw',
                     marginLeft:'0',
                     border:'5px solid black',
                     display:'inline-block',
@@ -339,7 +339,7 @@ async componentDidMount(){
             this.setState({...this.state,
             EnemyRobot: healEnemy,
             EnemyAttackStyle:{
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid Green',
             display:'inline-block',
@@ -354,7 +354,7 @@ async componentDidMount(){
         if(enemyChoice === 0){
         this.setState({...this.state,
         AttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -362,7 +362,7 @@ async componentDidMount(){
           borderRadius:'8px'
           },
           EnemyAttackStyle:{
-          width:'350px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -384,7 +384,7 @@ async componentDidMount(){
           Disabled:false,
           YourRobot:updatePlayer,
             EnemyAttackStyle: {
-            width:'350px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -448,7 +448,7 @@ async componentDidMount(){
         EnemyRobot:newEnemyRobot,
         Disabled:false,
         AttackStyle:{
-          width:'450px',
+          width:'25vw',
           marginLeft:'0',
           border:'5px solid black',
           display:'inline-block',
@@ -456,7 +456,7 @@ async componentDidMount(){
           borderRadius:'8px'
           },
           EnemyAttackStyle: {
-            width:'450px',
+            width:'25vw',
             marginLeft:'0',
             border:'5px solid black',
             display:'inline-block',
@@ -480,12 +480,30 @@ async componentDidMount(){
     });
     this.setState({
       ...this.state,
-      Robots:resetRobots
+      Robots:resetRobots,
+      Disabled:false,
+        AttackStyle:{
+          width:'25vw',
+          marginLeft:'0',
+          border:'5px solid black',
+          display:'inline-block',
+          position:'relative',
+          borderRadius:'8px'
+          },
+          EnemyAttackStyle: {
+            width:'25vw',
+            marginLeft:'0',
+            border:'5px solid black',
+            display:'inline-block',
+            position:'relative',
+            borderRadius:'8px'
+        },
     });
-   let getEnemyRobot =  this.state.Robots.find((ele) => {
+   let getEnemyRobot = await this.state.Robots.find((ele) => {
       if(ele.PlayerRobot === false){
         return ele
       }
+      return null
     });
     this.setState({
       EnemyRobot:[getEnemyRobot]

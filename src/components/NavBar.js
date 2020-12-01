@@ -5,9 +5,9 @@ class NavBar extends React.Component {
 
     render() { 
         return ( 
-            <div className='bg-dark text-white' style={NavBarStyle}>
-                <button onClick={this.props.onClick} className='btn-danger' style={NavBarResetStyle}>Reset</button>
-                <h4 style={TitleStyle}>Cybernetic Carnage</h4>
+            <div id='NavBarContainerDiv' className=' bg-dark text-white' style={NavBarStyle}>
+                <button onClick={this.props.onClick} id='NavBarResetButton' className=' btn-danger' style={NavBarResetStyle}>Reset</button>
+                <h4 id='NavBarTitle' style={TitleStyle}>Cybernetic Carnage</h4>
                 <div style={LinkContainerStyle}>
                 <div>
                     <Link className='LinkHover' style={NavBarLinkStyle} to='/'>Home</Link>
@@ -27,7 +27,7 @@ class NavBar extends React.Component {
     }
 }
 const NavBarStyle = {
-    height:'50px',
+    height:'55px',
     background:'#234691',
     display:'flex',
     justifyContent:'space-around',
@@ -73,7 +73,8 @@ const NavBarResetStyle = {
     borderRadius:'7px'
 };
 const TitleStyle = {
-    marginRight:'60vw',
-    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
+    marginRight:'30vw',
+    fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif',
+    transition: 'ease-in-out, 200ms'
 };
 export default NavBar;

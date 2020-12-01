@@ -17,7 +17,7 @@ class OneFight extends React.Component {
                 onPointerEnter={this.props.onPointerEnter} 
                 GitHubLinkStyle={this.props.GitHubLinkStyle}></NavBar>
                 <header>
-                <h1 style={{fontSize:'60px', fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'}}>Battle!</h1>
+                <h1 style={{fontSize:'5.5vh', fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'}}>Battle!</h1>
                 </header>
                 <div style={containerStyle}>
                 {this.props.YourRobot.map((ele) => {
@@ -60,7 +60,8 @@ class OneFight extends React.Component {
 }
 const containerStyle={
     display:'flex',
-    justifyContent:'center'
+    justifyContent:'center',
+    flexWrap:'wrap'
 };
 const FightPageStyle = {
     height:'100%',
