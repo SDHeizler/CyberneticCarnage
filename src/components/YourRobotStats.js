@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 class YourRobotStats extends React.Component {
     render() { 
         return ( 
@@ -44,7 +45,7 @@ const YourRobotImageStyle = {
 const YourRobotStatsStyle = {
     fontSize:'3.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
-}
+};
 const YourRobotHealthStyle = {
     fontSize:'2.5vh',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
@@ -70,5 +71,12 @@ const DivContStyle = {
     height:'auto',
     marginLeft:'auto',
     marginRight:'auto'
+};
+
+// PropTypes
+YourRobotStats.propTypes = {
+    name:PropTypes.string,
+    health:PropTypes.number,
+    attacks:PropTypes.array
 };
 export default YourRobotStats;

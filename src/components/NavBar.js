@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import Menu from '../pictures/menu.svg'
+import {Link} from 'react-router-dom';
+import Menu from '../pictures/menu.svg';
+import PropTypes from 'prop-types';
 class NavBar extends React.Component {
 
     render() { 
@@ -76,5 +77,13 @@ const TitleStyle = {
     marginRight:'30vw',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif',
     transition: 'ease-in-out, 200ms'
+};
+
+// PropTypes
+NavBar.propTypes = {
+    onClick:PropTypes.func,
+    onPointerEnter:PropTypes.func,
+    onPointerLeave:PropTypes.func,
+    
 };
 export default NavBar;

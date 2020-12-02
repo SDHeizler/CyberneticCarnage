@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 class Reset extends React.Component {
     render() { 
         return ( 
@@ -21,5 +22,10 @@ const ResetPageButtonStyle = {
     paddingBottom:'20px',
     fontSize:'20px',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
+};
+
+// PropTypes
+Reset.propTypes = {
+    onClick:PropTypes.func.isRequired
 };
 export default Reset;

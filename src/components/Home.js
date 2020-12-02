@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import NavBar from './NavBar'
+import NavBar from './NavBar';
+import PropTypes from 'prop-types';
 class Home extends React.Component {
     render() { 
         return ( 
@@ -45,4 +46,12 @@ const FooterStyle = {
 
 };
 
+
+// PropTypes
+Home.propTypes = {
+    onClick:PropTypes.func.isRequired,
+    onPointerEnter:PropTypes.func.isRequired,
+    onPointerLeave:PropTypes.func.isRequired,
+    GitHubLinkStyle:PropTypes.object
+};
 export default Home;

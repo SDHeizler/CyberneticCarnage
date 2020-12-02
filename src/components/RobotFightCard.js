@@ -1,5 +1,6 @@
 import React from 'react';
-import HealthBar from './HealthBar'
+import HealthBar from './HealthBar';
+import PropTypes from 'prop-types';
 class RobotFightCard extends React.Component {
     
     
@@ -39,7 +40,7 @@ class RobotFightCard extends React.Component {
             </div>
          );
     }
-}
+};
  
 const formStyle={
     display:'flex',
@@ -53,5 +54,15 @@ const RobotImageStyle = {
 const LabelInputStyle = {
     fontSize:'2.5vh',
     marginTop:'10px',
-}
+};
+
+// PropTypes
+RobotFightCard.propTypes = {
+    AttackStyle:PropTypes.object,
+    Name:PropTypes.string,
+    Health:PropTypes.number,
+    onSubmit:PropTypes.func,
+    Attacks:PropTypes.array,
+    disabled:PropTypes.bool
+};
 export default RobotFightCard;

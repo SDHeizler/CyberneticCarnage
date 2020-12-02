@@ -1,5 +1,6 @@
 import React from 'react';
-import HealthBar from './HealthBar'
+import HealthBar from './HealthBar';
+import PropTypes from 'prop-types';
 class EnemyFightCard extends React.Component {
     
     render() { 
@@ -17,5 +18,13 @@ class EnemyFightCard extends React.Component {
 const EnemyImageStyle = {
     height:'auto',
     width:'9vw'
-}
+};
+
+// PropTypes
+EnemyFightCard.propTypes = {
+    EnemyStyle:PropTypes.object,
+    Name:PropTypes.string,
+    Health:PropTypes.number,
+    
+};
 export default EnemyFightCard;

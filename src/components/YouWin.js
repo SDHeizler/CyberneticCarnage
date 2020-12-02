@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 class YouWin extends React.Component {
     render() { 
         return(
@@ -20,6 +21,11 @@ const YouWinButtonStyle = {
     paddingBottom:'20px',
     fontSize:'20px',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
+};
+
+// PropTypes
+YouWin.propTypes = {
+    onClick:PropTypes.func.isRequired
 };
 export default YouWin;
 

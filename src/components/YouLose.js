@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 class YouLose extends React.Component {
     render() { 
         return(
@@ -20,5 +21,10 @@ const YouLoseButtonStyle = {
     paddingBottom:'20px',
     fontSize:'20px',
     fontFamily:'Open Sans, Noto Sans, Roboto, Sans Sarif'
+};
+
+// PropTypes
+YouLose.propTypes = {
+    onClick:PropTypes.func.isRequired
 };
 export default YouLose;

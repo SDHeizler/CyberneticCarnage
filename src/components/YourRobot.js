@@ -2,6 +2,7 @@ import React from 'react';
 import YourRobotStats from './YourRobotStats';
 import YourRobotPic from '../pictures/YourRobotPic.jpg';
 import NavBar from './NavBar';
+import PropTypes from 'prop-types'
 class YourRobot extends React.Component {
     constructor(props){
         super(props)
@@ -36,5 +37,13 @@ class YourRobot extends React.Component {
 const YourRobotPageStyle = {
     height:'100vh',
     color:'White',
-}
+};
+
+// PropTypes
+YourRobot.propTypes = {
+    onClick:PropTypes.func.isRequired,
+    onPointerEnter:PropTypes.func.isRequired,
+    onPointerLeave:PropTypes.func.isRequired,
+    YourRobot:PropTypes.array
+};
 export default YourRobot;

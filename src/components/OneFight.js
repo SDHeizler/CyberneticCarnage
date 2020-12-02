@@ -4,6 +4,7 @@ import EnemyFightCard from './EnemyFightCard';
 import YourRobotPic from '../pictures/YourRobotPic.jpg';
 import Robot1 from '../pictures/Robot1.jpg';
 import NavBar from './NavBar';
+import PropTypes from 'prop-types';
 class OneFight extends React.Component {
 
 
@@ -57,14 +58,27 @@ class OneFight extends React.Component {
             </div>
             );
     }
-}
+};
 const containerStyle={
     display:'flex',
     justifyContent:'center',
-    flexWrap:'wrap'
 };
 const FightPageStyle = {
     height:'100%',
     color:'White'
-}
+};
+
+// PropTypes
+OneFight.propTypes = {
+    onClick:PropTypes.func.isRequired,
+    onPointerEnter:PropTypes.func.isRequired,
+    onPointerLeave:PropTypes.func.isRequired,
+    GitHubLinkStyle:PropTypes.object,
+    YourRobot:PropTypes.array,
+    onSubmit:PropTypes.func,
+    onChange:PropTypes.func,
+    disabled:PropTypes.bool,
+    AttackStyle:PropTypes.object,
+    EnemyStyle:PropTypes.object
+};
 export default OneFight;

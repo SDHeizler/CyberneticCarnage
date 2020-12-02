@@ -1,5 +1,6 @@
 import React from 'react';
-import Filler from './Filler'
+import Filler from './Filler';
+import PropTypes from 'prop-types';
 class HealthBar extends React.Component {
     state = {  }
     render() { 
@@ -20,5 +21,10 @@ const progressBar={
     borderRadius:'50px',
     border:'1px solid black',
     position:'relative'
-}
+};
+
+// PropTypes
+HealthBar.propTypes = {
+    Health:PropTypes.number.isRequired
+};
 export default HealthBar;
