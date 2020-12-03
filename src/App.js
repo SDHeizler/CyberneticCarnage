@@ -10,7 +10,7 @@ import YouLose from './components/YouLose';
 import YouWin from './components/YouWin';
 import Reset from './components/Reset';
 import axios from 'axios';
-
+import PropTypes from 'prop-types'
 
 class App extends React.Component {
   constructor(){
@@ -22,7 +22,6 @@ class App extends React.Component {
         YourRobot:[],
         PlayerAttack:'',
         Checked:NaN,
-        PlayerHealthPer:'',
         Disabled:false,
         AttackStyle:{
         width:'25vw',
@@ -43,13 +42,11 @@ class App extends React.Component {
         GitHubLinkStyle:{
           display:'none'
         },
-        buttonText:'Continue',
-      
     }
-  }
+  };
 async componentDidMount(){
   const getAllRobots = await 
-  axios.get('http://localhost:8000/')
+  axios.get('https://radiant-everglades-71115.herokuapp.com/')
   .then((res) => {
     return res.data
   })
@@ -434,7 +431,7 @@ async componentDidMount(){
         return ele
       });
         let enemyId = this.state.EnemyRobot[0]._id;
-          let newEnemyRobot = await axios.delete(`http://localhost:8000/${enemyId}`)
+          let newEnemyRobot = await axios.delete(`https://radiant-everglades-71115.herokuapp.com/${enemyId}`)
           .then((response) => {
             console.log(response.data)
             return response.data;
@@ -468,7 +465,7 @@ async componentDidMount(){
         };  
   };
   resetButton = async () => {
-    let resetRobots = await axios.post('http://localhost:8000/',
+    let resetRobots = await axios.post('https://radiant-everglades-71115.herokuapp.com/',
     {
       Robots
     })
@@ -557,5 +554,16 @@ async componentDidMount(){
   }
 };
 
-
+// PropTypes
+App.propTypes = {
+  Robots:PropTypes.array,
+  EnemyRobots:PropTypes.array,
+  EnemyRobot:PropTypes.array,
+  YourRobot:PropTypes.array,
+  PlayerAttack:PropTypes.string,
+  Disabled:PropTypes.bool,
+  AttackStyle:PropTypes.object,
+  EnemyAttackStyle:PropTypes.object,
+  GitHubLinkStyle:PropTypes.object,
+};
 export default withRouter(App);
