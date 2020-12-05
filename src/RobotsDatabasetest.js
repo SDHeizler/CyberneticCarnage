@@ -4,7 +4,7 @@ const Robots = [
         Health:100,
         PlayerRobot: true,
         Attacks:[
-             'Attack', 'Defend','Heal'
+            'Attack', 'Defend','Heal'
         ]
     },
     {
@@ -16,6 +16,34 @@ const Robots = [
     },
     {
         name:'Robot Three',
+        Health:10,
+        PlayerRobot: false,
+        Attacks:[
+        ]
+    },
+     {
+        name:'Robot four',
+        Health:10,
+        PlayerRobot: false,
+        Attacks:[
+        ]
+    },
+     {
+        name:'Robot five',
+        Health:10,
+        PlayerRobot: false,
+        Attacks:[
+        ]
+    },
+     {
+        name:'Robot six',
+        Health:10,
+        PlayerRobot: false,
+        Attacks:[
+        ]
+    },
+     {
+        name:'Robot seven',
         Health:10,
         PlayerRobot: false,
         Attacks:[

@@ -45,40 +45,32 @@ class App extends React.Component {
     }
   };
 async componentDidMount(){
-  const getAllRobots = await 
-  axios.get('https://radiant-everglades-71115.herokuapp.com/')
+    await axios.get('https://radiant-everglades-71115.herokuapp.com/')
   .then((res) => {
-    return res.data
-  })
-  .catch((err) => {console.log(err)});
-
-  this.setState({
-    ...this.state,
-    Robots:getAllRobots
-  });
-
-
-    let getYourRobot = await this.state.Robots.find((ele) => {
-        if(ele.PlayerRobot === true){
+    let YourRobot =  res.data.find((ele) => {
+       if(ele.PlayerRobot === true){
           return ele
         }else{
           return null
         }
-      });
-
-    this.setState({ ...this.state,
-      YourRobot:[getYourRobot]
     });
-    const getEnemyRobots = await this.state.Robots.filter((ele) => {
-    if(ele.PlayerRobot === false){
+    let getEnemyRobots =  res.data.filter((ele) => {
+      if(ele.PlayerRobot === false){
         return ele
     }
     return null
-    })
-    this.setState({ ...this.state,
-        EnemyRobots:getEnemyRobots,
     });
-         let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
+    this.setState({
+    ...this.state,
+    Robots:res.data,
+    YourRobot:[YourRobot],
+    EnemyRobots:getEnemyRobots,
+
+  });
+  })
+  .catch((err) => {console.log(err)});
+
+    let enemyNum = await Math.floor(Math.random() * Math.floor(this.state.EnemyRobots.length));
       if(this.state.EnemyRobot.length < 1){
         
       }
@@ -431,9 +423,8 @@ async componentDidMount(){
         return ele
       });
         let enemyId = this.state.EnemyRobot[0]._id;
-          let newEnemyRobot = await axios.delete(`https://radiant-everglades-71115.herokuapp.com/${enemyId}`)
+      let newEnemyRobot =  await axios.delete(`https://radiant-everglades-71115.herokuapp.com/${enemyId}`)
           .then((response) => {
-            console.log(response.data)
             return response.data;
           })
           .catch((err) => console.log(err));
@@ -442,7 +433,7 @@ async componentDidMount(){
         }else{
             this.setState({...this.state,
         YourRobot:newPlayerHealth,
-        EnemyRobot:newEnemyRobot,
+        EnemyRobot:[newEnemyRobot],
         Disabled:false,
         AttackStyle:{
           width:'25vw',
@@ -462,7 +453,7 @@ async componentDidMount(){
         },
       });
       this.props.history.push('/');
-        };  
+    }
   };
   resetButton = async () => {
     let resetRobots = await axios.post('https://radiant-everglades-71115.herokuapp.com/',
