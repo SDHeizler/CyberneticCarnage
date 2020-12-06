@@ -429,7 +429,7 @@ async componentDidMount(){
           })
           .catch((err) => console.log(err));
         if(!newEnemyRobot || newEnemyRobot.length < 1){
-          this.props.history.push('/CyberneticCarnage/Reset')
+          this.props.history.push('/Reset')
         }else{
             this.setState({...this.state,
         YourRobot:newPlayerHealth,
@@ -509,14 +509,14 @@ async componentDidMount(){
         onPointerEnter={this.onPointerEnter} 
         GitHubLinkStyle={this.state.GitHubLinkStyle}
         ></Home></Route>
-        <Route path='/CyberneticCarnage/YourRobot'>
+        <Route path='/YourRobot'>
           <YourRobot
           onClick={this.resetButton} 
           onPointerLeave={this.onPointerLeave} 
           onPointerEnter={this.onPointerEnter} 
           GitHubLinkStyle={this.state.GitHubLinkStyle} 
           YourRobot={this.state.YourRobot}></YourRobot></Route>
-        <Route path='/CyberneticCarnage/SingleBattle'>
+        <Route path='/SingleBattle'>
             <OneFight 
               onClick={this.resetButton} 
               onPointerLeave={this.onPointerLeave} 
@@ -532,12 +532,12 @@ async componentDidMount(){
               EnemyStyle={this.state.EnemyAttackStyle}
             ></OneFight>
           </Route>
-          <Route path='/CyberneticCarnage/YouLose'><YouLose onClick={this.resetButton}></YouLose></Route>
-          <Route path='/CyberneticCarnage/YouWin'>
+          <Route path='/YouLose'><YouLose onClick={this.resetButton}></YouLose></Route>
+          <Route path='/YouWin'>
             <YouWin
             onClick={this.youWinButton}
             ></YouWin></Route>
-            <Route path='/CyberneticCarnage/Reset'><Reset onClick={this.resetButton}></Reset></Route>
+            <Route path='/Reset'><Reset onClick={this.resetButton}></Reset></Route>
         <Route  path=''><Error></Error></Route>
       </Switch>
     </div>
