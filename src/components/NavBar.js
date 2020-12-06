@@ -17,8 +17,8 @@ class NavBar extends React.Component {
                     <img onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={imgStyle} src={Menu} alt=''></img>
                     <div style={containerGitHubLink}>
                     <ul  className='bg-dark text-white' onPointerLeave={this.props.onPointerLeave} onPointerEnter={this.props.onPointerEnter} style={this.props.GitHubLinkStyle}>
-                        <li style={ListItemStyle}><a target='_blank' style={hrefStyle} href='#'>Github</a></li>
-                        <li style={ListItemStyle}><a style={hrefStyle} href='https://sdheizler.github.io/MyPortfolio/' target='_blank'>Portfolio</a></li>
+                        <li style={ListItemStyle}><a target='_blank' rel='noopener noreferrer' style={hrefStyle} href='#'>Github</a></li>
+                        <li style={ListItemStyle}><a style={hrefStyle} href='https://sdheizler.github.io/MyPortfolio/' target='_blank' rel='noopener noreferrer'>Portfolio</a></li>
                     </ul>
                     </div>
                 </div>
