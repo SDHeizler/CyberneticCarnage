@@ -429,7 +429,7 @@ async componentDidMount(){
           })
           .catch((err) => console.log(err));
         if(!newEnemyRobot || newEnemyRobot.length < 1){
-          this.props.history.push('https://sdheizler.github.io/Reset')
+          this.props.history.push('https://sdheizler.github.io/CyberneticCarnage/Reset')
         }else{
             this.setState({...this.state,
         YourRobot:newPlayerHealth,
@@ -509,14 +509,14 @@ async componentDidMount(){
         onPointerEnter={this.onPointerEnter} 
         GitHubLinkStyle={this.state.GitHubLinkStyle}
         ></Home></Route>
-        <Route path='https://sdheizler.github.io/YourRobot'>
+        <Route path='https://sdheizler.github.io/CyberneticCarnage/YourRobot'>
           <YourRobot
           onClick={this.resetButton} 
           onPointerLeave={this.onPointerLeave} 
           onPointerEnter={this.onPointerEnter} 
           GitHubLinkStyle={this.state.GitHubLinkStyle} 
           YourRobot={this.state.YourRobot}></YourRobot></Route>
-        <Route path='https://sdheizler.github.io/SingleBattle'>
+        <Route path='https://sdheizler.github.io/CyberneticCarnage/SingleBattle'>
             <OneFight 
               onClick={this.resetButton} 
               onPointerLeave={this.onPointerLeave} 
@@ -532,12 +532,12 @@ async componentDidMount(){
               EnemyStyle={this.state.EnemyAttackStyle}
             ></OneFight>
           </Route>
-          <Route path='https://sdheizler.github.io/YouLose'><YouLose onClick={this.resetButton}></YouLose></Route>
-          <Route path='https://sdheizler.github.io/YouWin'>
+          <Route path='https://sdheizler.github.io/CyberneticCarnage/YouLose'><YouLose onClick={this.resetButton}></YouLose></Route>
+          <Route path='https://sdheizler.github.io/CyberneticCarnage/YouWin'>
             <YouWin
             onClick={this.youWinButton}
             ></YouWin></Route>
-            <Route path='https://sdheizler.github.io/Reset'><Reset onClick={this.resetButton}></Reset></Route>
+            <Route path='https://sdheizler.github.io/CyberneticCarnage/Reset'><Reset onClick={this.resetButton}></Reset></Route>
         <Route  path=''><Error></Error></Route>
       </Switch>
     </div>
