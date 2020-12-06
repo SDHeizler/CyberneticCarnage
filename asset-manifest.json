@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/CyberneticCarnage/static/css/main.f2c61b91.chunk.css",
+    "main.js": "/CyberneticCarnage/static/js/main.ebc4d66a.chunk.js",
+    "main.js.map": "/CyberneticCarnage/static/js/main.ebc4d66a.chunk.js.map",
+    "runtime-main.js": "/CyberneticCarnage/static/js/runtime-main.6dd2c2e0.js",
+    "runtime-main.js.map": "/CyberneticCarnage/static/js/runtime-main.6dd2c2e0.js.map",
+    "static/js/2.76832f46.chunk.js": "/CyberneticCarnage/static/js/2.76832f46.chunk.js",
+    "static/js/2.76832f46.chunk.js.map": "/CyberneticCarnage/static/js/2.76832f46.chunk.js.map",
+    "index.html": "/CyberneticCarnage/index.html",
+    "precache-manifest.b44f39e8992fa3f0d4ee026d31e60ab9.js": "/CyberneticCarnage/precache-manifest.b44f39e8992fa3f0d4ee026d31e60ab9.js",
+    "service-worker.js": "/CyberneticCarnage/service-worker.js",
+    "static/css/main.f2c61b91.chunk.css.map": "/CyberneticCarnage/static/css/main.f2c61b91.chunk.css.map",
+    "static/js/2.76832f46.chunk.js.LICENSE.txt": "/CyberneticCarnage/static/js/2.76832f46.chunk.js.LICENSE.txt",
+    "static/media/Robot1.jpg": "/CyberneticCarnage/static/media/Robot1.c35f1b67.jpg",
+    "static/media/YourRobotPic.jpg": "/CyberneticCarnage/static/media/YourRobotPic.ce6e68ba.jpg",
+    "static/media/menu.svg": "/CyberneticCarnage/static/media/menu.f80cd3a5.svg",
+    "static/media/App.css": "/CyberneticCarnage/static/media/roboticbackground.2e8f0d44.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6dd2c2e0.js",
+    "static/js/2.76832f46.chunk.js",
+    "static/css/main.f2c61b91.chunk.css",
+    "static/js/main.ebc4d66a.chunk.js"
+  ]
+}
