@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d3f4d45536f242759536e8c0869f9892",
+    "revision": "7f5d84c453de18dd686a4afb4b82bd21",
     "url": "/CyberneticCarnage/index.html"
   },
   {
-    "revision": "35029c65d79aa1f41902",
-    "url": "/CyberneticCarnage/static/css/main.f2c61b91.chunk.css"
+    "revision": "aeaa2e475847f570b6a8",
+    "url": "/CyberneticCarnage/static/css/main.ce72f3ef.chunk.css"
   },
   {
-    "revision": "3e1436ea6a7a38e472cc",
-    "url": "/CyberneticCarnage/static/js/2.76832f46.chunk.js"
+    "revision": "01b0966adabe0ff8b4f6",
+    "url": "/CyberneticCarnage/static/js/2.50e404b7.chunk.js"
   },
   {
     "revision": "9b318b6fb13190fe82c0677e9264b3c7",
-    "url": "/CyberneticCarnage/static/js/2.76832f46.chunk.js.LICENSE.txt"
+    "url": "/CyberneticCarnage/static/js/2.50e404b7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "35029c65d79aa1f41902",
-    "url": "/CyberneticCarnage/static/js/main.f7ef5faf.chunk.js"
+    "revision": "aeaa2e475847f570b6a8",
+    "url": "/CyberneticCarnage/static/js/main.bfdc852b.chunk.js"
   },
   {
     "revision": "d8ec6bb65aa3cdb6c5c4",
@@ -34,6 +34,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f80cd3a5e1971de88ee7527569539fa6",
     "url": "/CyberneticCarnage/static/media/menu.f80cd3a5.svg"
+  },
+  {
+    "revision": "9962e4b70020e7f36fd6d7f94d809424",
+    "url": "/CyberneticCarnage/static/media/refresh.9962e4b7.png"
   },
   {
     "revision": "2e8f0d443ba158cd390ea8a286cb6d92",

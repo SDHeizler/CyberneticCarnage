@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/CyberneticCarnage/static/css/main.f2c61b91.chunk.css",
-    "main.js": "/CyberneticCarnage/static/js/main.f7ef5faf.chunk.js",
-    "main.js.map": "/CyberneticCarnage/static/js/main.f7ef5faf.chunk.js.map",
+    "main.css": "/CyberneticCarnage/static/css/main.ce72f3ef.chunk.css",
+    "main.js": "/CyberneticCarnage/static/js/main.bfdc852b.chunk.js",
+    "main.js.map": "/CyberneticCarnage/static/js/main.bfdc852b.chunk.js.map",
     "runtime-main.js": "/CyberneticCarnage/static/js/runtime-main.6dd2c2e0.js",
     "runtime-main.js.map": "/CyberneticCarnage/static/js/runtime-main.6dd2c2e0.js.map",
-    "static/js/2.76832f46.chunk.js": "/CyberneticCarnage/static/js/2.76832f46.chunk.js",
-    "static/js/2.76832f46.chunk.js.map": "/CyberneticCarnage/static/js/2.76832f46.chunk.js.map",
+    "static/js/2.50e404b7.chunk.js": "/CyberneticCarnage/static/js/2.50e404b7.chunk.js",
+    "static/js/2.50e404b7.chunk.js.map": "/CyberneticCarnage/static/js/2.50e404b7.chunk.js.map",
     "index.html": "/CyberneticCarnage/index.html",
-    "precache-manifest.75e0cf16b5257a546531bd9054b9ce5e.js": "/CyberneticCarnage/precache-manifest.75e0cf16b5257a546531bd9054b9ce5e.js",
+    "precache-manifest.4806efb0562538460cc09c42bec16f42.js": "/CyberneticCarnage/precache-manifest.4806efb0562538460cc09c42bec16f42.js",
     "service-worker.js": "/CyberneticCarnage/service-worker.js",
-    "static/css/main.f2c61b91.chunk.css.map": "/CyberneticCarnage/static/css/main.f2c61b91.chunk.css.map",
-    "static/js/2.76832f46.chunk.js.LICENSE.txt": "/CyberneticCarnage/static/js/2.76832f46.chunk.js.LICENSE.txt",
+    "static/css/main.ce72f3ef.chunk.css.map": "/CyberneticCarnage/static/css/main.ce72f3ef.chunk.css.map",
+    "static/js/2.50e404b7.chunk.js.LICENSE.txt": "/CyberneticCarnage/static/js/2.50e404b7.chunk.js.LICENSE.txt",
     "static/media/Robot1.jpg": "/CyberneticCarnage/static/media/Robot1.c35f1b67.jpg",
     "static/media/YourRobotPic.jpg": "/CyberneticCarnage/static/media/YourRobotPic.ce6e68ba.jpg",
     "static/media/menu.svg": "/CyberneticCarnage/static/media/menu.f80cd3a5.svg",
+    "static/media/refresh.png": "/CyberneticCarnage/static/media/refresh.9962e4b7.png",
     "static/media/App.css": "/CyberneticCarnage/static/media/roboticbackground.2e8f0d44.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.6dd2c2e0.js",
-    "static/js/2.76832f46.chunk.js",
-    "static/css/main.f2c61b91.chunk.css",
-    "static/js/main.f7ef5faf.chunk.js"
+    "static/js/2.50e404b7.chunk.js",
+    "static/css/main.ce72f3ef.chunk.css",
+    "static/js/main.bfdc852b.chunk.js"
   ]
 }
